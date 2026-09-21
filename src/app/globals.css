@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+  --font-playfair: "Playfair Display", Georgia, serif;
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+
+  --color-canvas: #FCFAF8;
+  --color-surface-card: #FFFFFF;
+  --color-surface-warm: #F8F3EF;
+  --color-surface-mist: #F2F7F4;
+  --color-terracotta: #C86A4B;
+  --color-terracotta-dark: #A64E33;
+  --color-terracotta-soft: #FAF0EB;
+  --color-rose-gold: #DF9B82;
+  --color-champagne: #EAC096;
+  --color-champagne-light: #FBF4EC;
+  --color-sage-soft: #E8F0EB;
+  --color-sage-accent: #5F8571;
+  --color-espresso: #26201D;
+  --color-taupe: #635852;
+  --color-hairline: #EFE6E0;
+
+  /* Medium-Dark Luxury Cocoa / Mocha Palette */
+  --color-mocha: #251C19;
+  --color-mocha-light: #322521;
+  --color-mocha-deep: #1A1311;
+  --color-mocha-card: #2D211D;
+}
+
+@layer base {
+  :root {
+    --font-outfit: "Outfit", sans-serif;
+    --font-playfair: "Playfair Display", serif;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    font-family: var(--font-outfit);
+    background-color: #FCFAF8;
+    color: #26201D;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-playfair);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Luxury Editorial Eyebrow & Badges */
+.badge-luxury {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #FFFFFF;
+  border: 1px solid #EADCD4;
+  color: #A64E33;
+  padding: 0.28rem 0.85rem;
+  border-radius: 9999px;
+  font-size: clamp(0.68rem, 2.5vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  max-width: 100%;
+  box-shadow: 0 2px 10px rgba(180, 140, 120, 0.06);
+}
+
+.badge-mocha {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(223, 155, 130, 0.14);
+  border: 1px solid rgba(223, 155, 130, 0.35);
+  color: #F4D3A1;
+  padding: 0.28rem 0.85rem;
+  border-radius: 9999px;
+  font-size: clamp(0.68rem, 2.5vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.badge-soft-rose {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #FDF2F8;
+  border: 1px solid #FCE7F3;
+  color: #9D174D;
+  padding: 0.28rem 0.85rem;
+  border-radius: 9999px;
+  font-size: clamp(0.68rem, 2.5vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Medium-Dark Mocha Luxury Card */
+.card-mocha {
+  background: linear-gradient(145deg, #2D211D 0%, #221815 100%);
+  border: 1px solid rgba(223, 155, 130, 0.22);
+  border-radius: 1.25rem;
+  box-shadow: 0 16px 36px -8px rgba(26, 19, 17, 0.45);
+  color: #FFFFFF;
+}
+
+.card-mocha:hover {
+  border-color: rgba(223, 155, 130, 0.45);
+  box-shadow: 0 20px 42px -6px rgba(26, 19, 17, 0.6);
+}
+
+/* High-End Soft Highlights */
+.soft-highlight {
+  background: #FAF0EB;
+  color: #A64E33;
+  padding: 0.12em 0.45em;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  border: 1px solid #F0D9CF;
+  display: inline;
+}
+
+.soft-highlight-champagne {
+  background: #FBF4EC;
+  color: #8C5928;
+  padding: 0.12em 0.45em;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  border: 1px solid #F1DEC9;
+  display: inline;
+}
+
+.soft-highlight-rose {
+  background: #FDF2F8;
+  color: #9D174D;
+  padding: 0.12em 0.45em;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  border: 1px solid #FCE7F3;
+  display: inline;
+}
+
+/* World-Class Card Surface */
+.luxury-card {
+  background: #FFFFFF;
+  border: 1px solid #EFE6E0;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 25px -4px rgba(100, 80, 70, 0.04), 0 2px 8px -2px rgba(100, 80, 70, 0.02);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover {
+  transform: translateY(-3px);
+  border-color: #E2D0C6;
+  box-shadow: 0 16px 36px -6px rgba(180, 120, 100, 0.10), 0 4px 12px -2px rgba(100, 80, 70, 0.04);
+}
+
+/* Warm Silk Card */
+.warm-silk-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF5F1 100%);
+  border: 1px solid #EADCD4;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 24px -4px rgba(160, 120, 100, 0.05);
+  transition: all 0.3s ease;
+}
+
+.warm-silk-card:hover {
+  transform: translateY(-3px);
+  border-color: #DDBDAF;
+  box-shadow: 0 14px 32px -6px rgba(160, 120, 100, 0.10);
+}
+
+/* CTA Primary Luxury Shimmer Button */
+.btn-luxury-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #D47453 0%, #C86A4B 50%, #B85B3D 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px -4px rgba(200, 106, 75, 0.38);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-luxury-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -4px rgba(200, 106, 75, 0.48);
+  background: linear-gradient(135deg, #DF7F5E 0%, #D47453 50%, #C86A4B 100%);
+}
+
+.btn-luxury-primary:active {
+  transform: translateY(0);
+}
+
+.btn-luxury-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3.5s infinite;
+  pointer-events: none;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3.5s infinite linear;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5D5CB;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C86A4B;
+}
