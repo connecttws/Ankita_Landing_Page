@@ -1,221 +1,143 @@
 "use client";
 
-import { useState } from "react";
-import {
-  Dumbbell,
-  Apple,
-  Brain,
-  Sparkles,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Dumbbell, Utensils, Brain, CalendarCheck, Sparkles } from "lucide-react";
 
 interface ThreeDimensionsSectionProps {
-  onBookClick: () => void;
+  onOpenBooking: () => void;
 }
 
-export default function ThreeDimensionsSection({
-  onBookClick,
-}: ThreeDimensionsSectionProps) {
-  const [activeDimension, setActiveDimension] = useState<number>(0);
+const dimensions = [
+  {
+    title: "FITNESS",
+    tagline: "Move for Strength & Vitality",
+    description:
+      "Build strength, mobility, stamina & confidence with movement designed specifically for your changing body — protecting bones, joints, and lean muscle without burnout.",
+    icon: Dumbbell,
+    accentColor: "from-primary/20 to-primary/5",
+    iconBg: "bg-primary text-white",
+  },
+  {
+    title: "NUTRITION",
+    tagline: "Nourish Without Restriction",
+    description:
+      "Learn how to nourish your body without extreme diets, severe food restrictions, or constantly counting calories. Practical Indian meals that stabilize hormones and blood sugar.",
+    icon: Utensils,
+    accentColor: "from-accent/25 to-accent/5",
+    iconBg: "bg-accent text-secondary",
+  },
+  {
+    title: "MIND & EMOTIONAL WELLBEING",
+    tagline: "Calm the Mental Load",
+    description:
+      "Work on stress, emotional eating, confidence, mindset, and the invisible mental load that often gets overlooked in midlife transitions. Regain emotional balance and peaceful sleep.",
+    icon: Brain,
+    accentColor: "from-secondary/15 to-secondary/5",
+    iconBg: "bg-secondary text-white",
+  },
+];
 
-  const dimensions = [
-    {
-      title: "FITNESS",
-      tagline: "Move for vitality, not punishment",
-      badgeText: "Strength & Joint Mobility",
-      icon: Dumbbell,
-      color: "#E8927C",
-      bgBadge: "rgba(232, 146, 124, 0.18)",
-      borderBadge: "rgba(232, 146, 124, 0.35)",
-      headlineHighlight: "Movement designed for your changing body",
-      description:
-        "Build strength, mobility, stamina & confidence without exhausting cardio routines that leave you drained.",
-      details: [
-        "Preserve lean muscle mass to keep your resting metabolic rate active",
-        "Joint-friendly functional mobility to protect hips, knees & lower back",
-        "Cortisol-conscious workouts that boost energy rather than causing burnout",
-        "Restorative strength conditioning that fits into 20-30 minute windows",
-      ],
-    },
-    {
-      title: "NUTRITION",
-      tagline: "Nourish without deprivation",
-      badgeText: "Hormone-Balancing Food",
-      icon: Apple,
-      color: "#EAC096",
-      bgBadge: "rgba(234, 192, 150, 0.18)",
-      borderBadge: "rgba(234, 192, 150, 0.35)",
-      headlineHighlight: "No extreme diets or calorie counting",
-      description:
-        "Learn how to nourish your body without extreme restrictions, starvation plans, or separate family meals.",
-      details: [
-        "Hormone-supportive macronutrient balancing for steady blood sugar",
-        "Targeted protein intake to eliminate afternoon energy slumps & cravings",
-        "Real-food strategies that let you eat comfortably with your family",
-        "Gentle gut-health and inflammation-calming nutrition habits",
-      ],
-    },
-    {
-      title: "MIND & EMOTIONAL WELLBEING",
-      tagline: "Lighten the mental load",
-      badgeText: "Stress & Sleep Reset",
-      icon: Brain,
-      color: "#79A790",
-      bgBadge: "rgba(121, 167, 144, 0.18)",
-      borderBadge: "rgba(121, 167, 144, 0.35)",
-      headlineHighlight: "Stress, emotional triggers & mental load",
-      description:
-        "Work on the psychological weight, emotional eating triggers, and anxiety that often get completely ignored.",
-      details: [
-        "Unpack subconscious emotional triggers behind late-night stress eating",
-        "Practical nervous system reset tools to lower cortisol and deepen sleep",
-        "Rebuilding body trust and self-worth when body changes feel overwhelming",
-        "Boundary setting and stress mitigation techniques for busy midlife women",
-      ],
-    },
-  ];
-
+export default function ThreeDimensionsSection({ onOpenBooking }: ThreeDimensionsSectionProps) {
   return (
-    <section
-      id="dimensions"
-      className="py-14 sm:py-20 lg:py-24 bg-gradient-to-b from-[#241A17] via-[#2D211D] to-[#241A17] text-white relative overflow-hidden w-full border-y border-[#C86A4B]/25"
-    >
-      {/* Warm Ambient Radial Glows */}
-      <div className="absolute top-0 left-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#C86A4B]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-80 sm:w-96 h-80 sm:h-96 bg-[#EAC096]/12 rounded-full blur-3xl pointer-events-none" />
+    <section id="dimensions" className="py-10 md:py-20 bg-background relative overflow-hidden w-full max-w-full">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute top-10 left-4 w-60 sm:w-72 h-60 sm:h-72 bg-primary/10 rounded-full blur-3xl opacity-70"></div>
+        <div className="absolute bottom-10 right-4 w-64 sm:w-80 h-64 sm:h-80 bg-accent/15 rounded-full blur-3xl opacity-60"></div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-3 min-[360px]:px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-          <div className="badge-mocha mb-3 min-[360px]:mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#EAC096]" />
-            <span>The Brightfield Philosophy</span>
-          </div>
-
-          <h2 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3 sm:mb-4 leading-tight text-white">
-            Stop Fighting Your Body. <br />
-            <span className="text-[#F4D3A1] italic">Start Understanding It.</span>
-          </h2>
-
-          <p className="text-xs min-[360px]:text-sm sm:text-base md:text-lg text-[#EAE2DC]/85 leading-relaxed max-w-2xl mx-auto">
-            Perimenopause and menopause aren’t simply about changing hormones. They affect{" "}
-            <strong className="text-white font-bold">how you move, eat, sleep, think, feel and recover</strong>.
-          </p>
-
-          <p className="mt-2 text-xs min-[360px]:text-sm sm:text-base text-[#F4D3A1] font-semibold max-w-xl mx-auto">
-            Brightfield doesn’t believe in generic workout sheets.{" "}
-            <span className="underline decoration-[#EAC096] underline-offset-4">
-              We work on the woman as a whole.
+      <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-[10px] min-[360px]:text-xs uppercase tracking-wider mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-accent flex-shrink-0" />
+              <span>The Whole-Woman Philosophy</span>
             </span>
-          </p>
+
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-secondary font-serif leading-tight">
+              Stop Fighting Your Body.<br />
+              <span className="text-primary italic">Start Understanding It.</span>
+            </h2>
+
+            <div className="h-1 w-16 sm:w-20 bg-primary rounded-full mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"></div>
+
+            <p className="text-xs sm:text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
+              Perimenopause and menopause aren&apos;t simply about changing hormones. They can affect how you move, eat, sleep, think, feel, and recover.
+            </p>
+            <p className="mt-1.5 text-xs sm:text-sm text-foreground/70 leading-relaxed max-w-2xl mx-auto px-1">
+              That&apos;s why Brightfield doesn&apos;t believe in giving you another generic diet or workout plan. We work on the woman as a whole.
+            </p>
+          </motion.div>
         </div>
 
-        {/* 3 Dimensions Medium-Dark Luxury Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
-          {dimensions.map((dim, idx) => {
+        {/* 3 Dimensions Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+          {dimensions.map((dim, index) => {
             const Icon = dim.icon;
-            const isSelected = activeDimension === idx;
-
             return (
-              <div
-                key={dim.title}
-                onClick={() => setActiveDimension(idx)}
-                className={`relative rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 cursor-pointer border ${
-                  isSelected
-                    ? "bg-[#332521] border-[#EAC096] shadow-xl shadow-black/50 -translate-y-1.5 ring-1 ring-[#EAC096]/50"
-                    : "bg-[#2A1F1B]/90 border-white/10 hover:border-white/25 hover:bg-[#30231F]"
-                }`}
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-md shadow-primary/5 border border-primary/15 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between relative group"
               >
                 <div>
-                  {/* Top Header Row inside card */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div
-                      className="w-12 h-12 min-[360px]:w-14 min-[360px]:h-14 rounded-2xl flex items-center justify-center shadow-inner shrink-0"
-                      style={{
-                        backgroundColor: dim.bgBadge,
-                        border: `1px solid ${dim.borderBadge}`,
-                      }}
-                    >
-                      <Icon className="w-6 h-6 min-[360px]:w-7 min-[360px]:h-7" style={{ color: dim.color }} />
-                    </div>
-                    <span className="text-xs font-mono font-bold tracking-widest text-[#F4D3A1] bg-white/10 px-2.5 py-1 rounded-md border border-white/10">
-                      0{idx + 1}
-                    </span>
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${dim.iconBg} flex items-center justify-center mb-4 sm:mb-6 shadow-sm shadow-primary/20 group-hover:scale-105 transition-transform duration-300`}>
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
 
-                  {/* Badge */}
-                  <span
-                    className="inline-block text-[10px] min-[360px]:text-[11px] font-extrabold uppercase tracking-wide px-2.5 py-0.5 rounded-full mb-2"
-                    style={{
-                      backgroundColor: dim.bgBadge,
-                      color: dim.color,
-                      border: `1px solid ${dim.borderBadge}`,
-                    }}
-                  >
-                    {dim.badgeText}
+                  <span className="text-[10px] sm:text-xs font-bold text-accent tracking-wider uppercase block mb-1">
+                    {dim.tagline}
                   </span>
 
-                  <h3 className="font-serif text-xl min-[360px]:text-2xl font-bold tracking-wide text-white mb-1.5">
+                  <h3 className="text-lg sm:text-2xl font-bold text-secondary font-serif mb-2.5 sm:mb-4">
                     {dim.title}
                   </h3>
 
-                  {/* Scannable Headline */}
-                  <p className="text-xs min-[360px]:text-sm font-bold text-[#F4D3A1] mb-3 leading-snug">
-                    ✓ {dim.headlineHighlight}
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-xs min-[360px]:text-sm text-[#EAE2DC]/80 leading-relaxed mb-5">
+                  <p className="text-xs sm:text-sm md:text-base text-foreground/75 leading-relaxed">
                     {dim.description}
                   </p>
-
-                  {/* Detailed Points */}
-                  <div className="space-y-2.5 pt-4 border-t border-white/10">
-                    {dim.details.map((point) => (
-                      <div key={point} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#EAE2DC]">
-                        <CheckCircle2
-                          className="w-4 h-4 shrink-0 mt-0.5"
-                          style={{ color: dim.color }}
-                        />
-                        <span className="leading-snug">{point}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
-                {/* Card Footer */}
-                <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs text-[#EAE2DC]/70">
-                  <span className="font-semibold text-[#F4D3A1]">Pillar 0{idx + 1}</span>
-                  <span className="text-[11px] font-medium">Personalised</span>
+                <div className="mt-5 pt-4 border-t border-gray-100 flex items-center text-[10px] sm:text-xs font-bold text-primary tracking-wide uppercase">
+                  <span>Dimension 0{index + 1} &bull; Tailored to You</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* ── Synthesis Statement & CTA ── */}
-        <div className="mt-12 sm:mt-16 text-center max-w-2xl mx-auto px-2">
-          <div className="inline-block p-1 rounded-full bg-white/10 backdrop-blur-md mb-3 sm:mb-4 border border-white/20 max-w-full">
-            <span className="px-4 sm:px-6 py-1.5 rounded-full bg-gradient-to-r from-[#C86A4B] to-[#DDA15E] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider block shadow-sm truncate">
-              One woman. Three dimensions. One personalised approach.
-            </span>
-          </div>
-
-          <p className="text-xs sm:text-sm text-[#EAE2DC]/75 mb-6">
-            When all three dimensions are calibrated to your hormonal stage, sustainable energy
-            and effortless weight equilibrium naturally follow.
+        {/* Tagline Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-8 sm:mt-16 bg-gradient-to-r from-secondary via-secondary to-[#481d34] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center max-w-4xl mx-auto shadow-xl"
+        >
+          <p className="text-lg sm:text-2xl font-serif font-bold text-accent mb-2 leading-snug">
+            One woman. Three dimensions. One personalised approach.
+          </p>
+          <p className="text-xs sm:text-sm text-white/80 max-w-xl mx-auto mb-5 sm:mb-6 leading-relaxed">
+            When your movement, food, and emotional wellbeing work together, sustainable weight balance and renewed energy happen naturally.
           </p>
 
           <button
-            onClick={onBookClick}
-            className="w-full sm:w-auto btn-luxury-primary py-3.5 px-7 sm:px-9 text-xs min-[360px]:text-sm sm:text-base font-bold shadow-2xl cursor-pointer hover:scale-105 transition-all"
+            onClick={onOpenBooking}
+            className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-white shadow-lg shadow-primary/30 transition-all cursor-pointer"
           >
-            <span>BOOK YOUR FREE CONSULTATION</span>
-            <ArrowRight className="w-4 h-4 ml-1.5" />
+            <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
+            <span className="truncate">BOOK YOUR FREE CONSULTATION</span>
+            <div className="absolute inset-0 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-secondary opacity-0 transition-opacity group-hover:opacity-100" />
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

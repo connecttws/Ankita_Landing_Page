@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import SectionDivider from "@/components/SectionDivider";
 import TransitionSymptoms from "@/components/TransitionSymptoms";
 import ThreeDimensionsSection from "@/components/ThreeDimensionsSection";
 import FourPillarsApproach from "@/components/FourPillarsApproach";
@@ -13,90 +12,59 @@ import TransformationSection from "@/components/TransformationSection";
 import ProcessSteps from "@/components/ProcessSteps";
 import NotAloneSection from "@/components/NotAloneSection";
 import FaqSection from "@/components/FaqSection";
-import FinalCtaBanner from "@/components/FinalCtaBanner";
 import Footer from "@/components/Footer";
 import StickyBottomBar from "@/components/StickyBottomBar";
 import BookingModal from "@/components/BookingModal";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalChallenge, setModalChallenge] = useState("Belly Weight & Metabolism");
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
-  const handleOpenModal = (challenge = "Belly Weight & Metabolism") => {
-    setModalChallenge(challenge);
-    setIsModalOpen(true);
-  };
+  const handleOpenBooking = () => setIsBookingOpen(true);
+  const handleCloseBooking = () => setIsBookingOpen(false);
 
   return (
-    <main className="relative w-full max-w-[100vw] min-h-[100dvh] overflow-x-hidden bg-[#FCFAF8] text-[#26201D]">
-      {/* 1. Main Navigation Header (Top Announcement Bar removed per user instruction) */}
-      <Navbar onBookClick={() => handleOpenModal()} />
+    <main className="min-h-[100dvh] overflow-x-hidden bg-background text-foreground">
+      {/* Navigation */}
+      <Navbar onOpenBooking={handleOpenBooking} />
 
-      {/* 2. Hero Section with VSL Video Frame & Hook */}
-      <Hero onBookClick={() => handleOpenModal()} />
+      {/* Hero Section */}
+      <Hero onOpenBooking={handleOpenBooking} />
 
-      <SectionDivider symbol="sparkles" />
+      {/* Symptoms / Empathy Section */}
+      <TransitionSymptoms onOpenBooking={handleOpenBooking} />
 
-      {/* 3. The Transition & 7 Symptoms Deep-Dive */}
-      <TransitionSymptoms onBookClick={() => handleOpenModal()} />
+      {/* Philosophy / 3 Dimensions Section */}
+      <ThreeDimensionsSection onOpenBooking={handleOpenBooking} />
 
-      <SectionDivider symbol="lotus" />
+      {/* 4 Pillars Framework Section */}
+      <FourPillarsApproach onOpenBooking={handleOpenBooking} />
 
-      {/* 4. Core Philosophy: The 3 Dimensions (Fitness, Nutrition, Mindset) - Rich Medium-Dark Mocha */}
-      <ThreeDimensionsSection onBookClick={() => handleOpenModal()} />
+      {/* Why Brightfield Differentiators */}
+      <WhyBrightfield onOpenBooking={handleOpenBooking} />
 
-      <SectionDivider symbol="sun" />
+      {/* Founder Spotlight: Ankita Pareek */}
+      <FounderProfile onOpenBooking={handleOpenBooking} />
 
-      {/* 5. The Brightfield 4-Pillar Approach (Move, Nourish, Reset, Thrive) */}
-      <FourPillarsApproach onBookClick={() => handleOpenModal()} />
+      {/* Transformation / Future Reality */}
+      <TransformationSection onOpenBooking={handleOpenBooking} />
 
-      <SectionDivider symbol="feather" />
+      {/* 4 Steps Process Roadmap */}
+      <ProcessSteps onOpenBooking={handleOpenBooking} />
 
-      {/* 6. Why Brightfield: Differentiators vs Generic Diets with High-Contrast Brightfield Method */}
-      <WhyBrightfield onBookClick={() => handleOpenModal()} />
+      {/* Reassurance Block */}
+      <NotAloneSection onOpenBooking={handleOpenBooking} />
 
-      <SectionDivider symbol="sparkles" />
+      {/* FAQ Accordion */}
+      <FaqSection onOpenBooking={handleOpenBooking} />
 
-      {/* 7. Meet Ankita Pareek: Founder Story & Portrait */}
-      <FounderProfile onBookClick={() => handleOpenModal()} />
+      {/* Footer & Final Journey CTA */}
+      <Footer onOpenBooking={handleOpenBooking} />
 
-      <SectionDivider symbol="lotus" />
+      {/* Mobile Sticky Consultation Bar */}
+      <StickyBottomBar onOpenBooking={handleOpenBooking} />
 
-      {/* 8. Transformation Vision: Imagine Waking Up And... */}
-      <TransformationSection onBookClick={() => handleOpenModal()} />
-
-      <SectionDivider symbol="sun" />
-
-      {/* 9. Process Roadmap: What Happens When You Start? (Steps 1 to 4) */}
-      <ProcessSteps onBookClick={() => handleOpenModal()} />
-
-      <SectionDivider symbol="feather" />
-
-      {/* 10. Empathy Reassurance: You Don't Have To Figure This Out Alone - Rich Medium-Dark Mocha */}
-      <NotAloneSection onBookClick={() => handleOpenModal()} />
-
-      <SectionDivider symbol="sparkles" />
-
-      {/* 11. Frequently Asked Questions (Accordion) */}
-      <FaqSection onBookClick={() => handleOpenModal()} />
-
-      <SectionDivider symbol="lotus" />
-
-      {/* 12. Final Grand CTA Banner - Rich Medium-Dark Mocha */}
-      <FinalCtaBanner onBookClick={() => handleOpenModal()} />
-
-      {/* 13. Trust Footer with Medical Disclaimer & Copyright - Grounding Espresso Mocha */}
-      <Footer />
-
-      {/* 14. Sticky Conversion Bottom Bar (Mobile & Desktop) */}
-      <StickyBottomBar onBookClick={() => handleOpenModal()} />
-
-      {/* 15. Interactive Booking Modal */}
-      <BookingModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        defaultChallenge={modalChallenge}
-      />
+      {/* Interactive Consultation Modal */}
+      <BookingModal isOpen={isBookingOpen} onClose={handleCloseBooking} />
     </main>
   );
 }

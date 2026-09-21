@@ -1,146 +1,204 @@
 "use client";
 
-import { Sparkles, Calendar, ArrowRight, ShieldCheck, Heart, Star, CheckCircle } from "lucide-react";
-import VslVideoFrame from "./VslVideoFrame";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { CalendarCheck, Play, Sparkles, HeartPulse } from "lucide-react";
+import Image from "next/image";
 
 interface HeroProps {
-  onBookClick: () => void;
+  onOpenBooking: () => void;
 }
 
-export default function Hero({ onBookClick }: HeroProps) {
+export default function Hero({ onOpenBooking }: HeroProps) {
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+
   return (
-    <section className="relative pt-6 pb-12 min-[360px]:pt-8 min-[360px]:pb-16 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24 overflow-hidden bg-gradient-to-b from-[#FCFAF8] via-[#FAF4F0] to-[#FCFAF8] w-full">
-      {/* Background Soft Luminous Lighting - Ethereal and Clean */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[350px] bg-gradient-to-r from-[#DF9B82]/15 via-[#EAC096]/20 to-[#E8F0EB]/25 blur-3xl -z-10 pointer-events-none" />
+    <section className="relative overflow-hidden bg-background pt-24 pb-10 sm:pt-36 sm:pb-20 w-full max-w-full">
+      {/* Background Decor */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#b850680d_1px,transparent_1px),linear-gradient(to_bottom,#b850680d_1px,transparent_1px)] bg-[size:32px_32px] sm:bg-[size:44px_44px]"></div>
 
-      <div className="max-w-7xl mx-auto px-3 min-[360px]:px-4 sm:px-6 lg:px-8">
-        {/* Main Hero Header Info */}
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          {/* Category Pill with luxury badge */}
-          <div className="badge-luxury mb-3 min-[360px]:mb-4 sm:mb-6 max-w-full text-center">
-            <Sparkles className="w-3 h-3 text-[#C86A4B] shrink-0" />
-            <span className="truncate">
-              PERIMENOPAUSE &amp; MENOPAUSE WELLNESS FOR{" "}
-              <strong className="text-[#26201D] bg-[#FAF0EB] px-2 py-0.5 rounded-full border border-[#EAD0C2] ml-0.5">
-                WOMEN 38+
-              </strong>
-            </span>
-          </div>
+        {/* Top Left Rosewood Blur */}
+        <div className="absolute top-0 left-0 w-full h-[500px] sm:h-[650px] bg-gradient-to-br from-primary/10 via-accent/5 to-transparent opacity-90 blur-2xl sm:blur-3xl"></div>
 
-          {/* Main Headline - Elegant Editorial Typography */}
-          <h1 className="font-serif text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#26201D] tracking-tight leading-[1.22] mb-4 sm:mb-6">
-            If losing weight{" "}
-            <span className="text-[#C86A4B] relative inline-block">
-              suddenly feels impossible
-              <span className="absolute -bottom-1 left-0 w-full h-2 bg-[#DF9B82]/25 rounded-full -rotate-1" />
-            </span>{" "}
-            <span className="soft-highlight-champagne whitespace-nowrap">after 38</span> —{" "}
-            <span className="italic text-[#635852] font-medium">feeling stuck?</span>{" "}
-            <span className="block text-[#26201D] mt-2 sm:mt-3 font-serif font-extrabold text-2xl min-[360px]:text-3xl sm:text-4xl md:text-5xl">
-              This is for you.
-            </span>
-          </h1>
+        {/* Top Right Amber/Plum Glow */}
+        <div className="absolute top-16 right-0 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-accent/10 rounded-full blur-2xl sm:blur-3xl"></div>
 
-          {/* Value Subheading with subtle luxury accents */}
-          <p className="text-xs min-[360px]:text-sm sm:text-base md:text-lg text-[#635852] max-w-2xl font-normal leading-relaxed mb-5 sm:mb-7 px-1">
-            <strong className="text-[#26201D] font-bold">Stop fighting your changing body</strong>{" "}
-            with harsh{" "}
-            <span className="line-through decoration-[#C86A4B]/60 decoration-2 text-[#8C5243] font-semibold">
-              crash diets
-            </span>{" "}
-            and exhausting workouts. Discover Brightfield’s{" "}
-            <span className="highlight-terracotta font-bold">
-              personalised whole-woman approach
-            </span>{" "}
-            designed for natural hormonal rhythm, metabolic strength, and renewed vitality.
-          </p>
+        {/* Floating Shapes */}
+        <motion.div
+          animate={{ y: [0, -16, 0], rotate: [0, 6, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-32 left-[4%] w-16 h-16 sm:w-24 sm:h-24 rounded-full border-2 border-primary/15 bg-gradient-to-br from-primary/10 to-transparent"
+        />
+        <motion.div
+          animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 right-[5%] w-20 h-20 sm:w-32 sm:h-32 rounded-2xl border border-accent/20 bg-gradient-to-bl from-accent/10 to-transparent transform rotate-12"
+        />
+      </div>
 
-          {/* Core Feature Bullet Ribbon - Sophisticated luxury badges */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 min-[360px]:gap-2 sm:gap-3 px-3 py-1.5 min-[360px]:py-2 rounded-2xl bg-white/95 border border-[#EADCD4] shadow-xs text-[11px] min-[360px]:text-xs sm:text-sm text-[#26201D] font-bold mb-6 sm:mb-8 max-w-full">
-            <span className="flex items-center gap-1.5 bg-[#FAF0EB] text-[#A64E33] px-2.5 py-1 rounded-xl border border-[#F0D9CF] shadow-2xs whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-[#C86A4B]" />
-              Personalised Guidance
-            </span>
-            <span className="flex items-center gap-1.5 bg-[#FDF2F8] text-[#9D174D] px-2.5 py-1 rounded-xl border border-[#FCE7F3] shadow-2xs whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-[#BE185D]" />
-              Sustainable Habits
-            </span>
-            <span className="flex items-center gap-1.5 bg-[#FBF4EC] text-[#8C5928] px-2.5 py-1 rounded-xl border border-[#F1DEC9] shadow-2xs whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-[#DDA15E]" />
-              No Crash Diets
-            </span>
-          </div>
+      <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Top Eyebrow Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-primary/10 border border-primary/20 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] min-[360px]:text-xs sm:text-sm font-bold text-primary tracking-wide uppercase mb-3 sm:mb-4 shadow-2xs max-w-full text-center"
+          >
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
+            <span className="truncate">Perimenopause &bull; Menopause Wellness 38+</span>
+          </motion.div>
+
+          {/* Main Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <h1 className="text-[22px] min-[360px]:text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-secondary font-serif leading-[1.2] sm:leading-[1.15] mb-3 sm:mb-4 break-words">
+              If Losing Weight Suddenly Feels <span className="text-primary italic">Impossible</span> After 38 &amp; Feeling Stuck —{" "}
+              <span className="block mt-1 sm:mt-2 text-secondary">
+                This Is For You.
+              </span>
+            </h1>
+
+            <p className="mt-2.5 sm:mt-4 text-xs min-[360px]:text-sm sm:text-lg leading-relaxed text-foreground/80 font-medium max-w-2xl mx-auto px-1">
+              Stop fighting your body with punishing diets. Learn why your metabolism and hormones have changed — and how to rebuild strength, calm, and vitality with a whole-woman approach.
+            </p>
+          </motion.div>
+
+          {/* Conic Gradient Animated Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.7 }}
+            className="mt-4 sm:mt-6 flex flex-row items-stretch justify-center gap-1.5 sm:gap-3 text-[10px] min-[360px]:text-xs sm:text-sm font-semibold text-secondary w-full max-w-2xl mx-auto"
+          >
+            <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-2xs min-w-0">
+              <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#b85068_50%,transparent_100%)] opacity-85" />
+              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-2 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
+                <span className="truncate">Personalised<br className="sm:hidden" /> Guidance</span>
+              </div>
+            </div>
+
+            <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-2xs min-w-0">
+              <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#b85068_50%,transparent_100%)] opacity-85" />
+              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-2 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
+                <span className="truncate">Sustainable<br className="sm:hidden" /> Habits</span>
+              </div>
+            </div>
+
+            <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-2xs min-w-0">
+              <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#b85068_50%,transparent_100%)] opacity-85" />
+              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-2 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
+                <span className="truncate">No Crash<br className="sm:hidden" /> Diets</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* VSL Video Container */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="mt-6 sm:mt-10 relative w-full max-w-3xl mx-auto aspect-video bg-secondary rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden group border-2 sm:border-4 border-white/80"
+          >
+            {isPlayingVideo ? (
+              <div className="relative w-full h-full flex flex-col items-center justify-center bg-secondary text-white p-4 sm:p-6 text-center">
+                <HeartPulse className="w-10 h-10 sm:w-12 sm:h-12 text-accent animate-pulse mb-2" />
+                <h4 className="text-base sm:text-xl font-bold font-serif mb-1 sm:mb-2">
+                  Special Video Presentation by Ankita Pareek
+                </h4>
+                <p className="text-xs sm:text-sm text-white/80 max-w-md mb-4">
+                  Understand how hormonal fluctuations after 38 affect your fat storage, sleep, and mood — and how our 3-dimension system restores your energy.
+                </p>
+                <button
+                  onClick={onOpenBooking}
+                  className="rounded-full bg-primary hover:bg-primary-hover px-5 py-2 text-xs sm:text-sm font-bold text-white shadow-md cursor-pointer"
+                >
+                  Book Free 1-on-1 Consultation
+                </button>
+              </div>
+            ) : (
+              <div
+                onClick={() => setIsPlayingVideo(true)}
+                className="relative w-full h-full cursor-pointer overflow-hidden group"
+              >
+                <Image
+                  src="/images/vsl_video_cover.jpg"
+                  alt="Ankita Pareek Video Cover"
+                  fill
+                  priority
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 768px"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/85 via-secondary/35 to-transparent transition-opacity group-hover:opacity-90"></div>
+
+                {/* Pulsing Play Button */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
+                  <div className="relative flex items-center justify-center">
+                    <div className="absolute w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-primary/40 animate-ping"></div>
+                    <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-primary text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-primary-hover transition-all duration-300">
+                      <Play className="w-5 h-5 sm:w-9 sm:h-9 fill-white ml-0.5 sm:ml-1" />
+                    </div>
+                  </div>
+                  <span className="mt-2.5 sm:mt-3 text-[10px] min-[360px]:text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-secondary/85 backdrop-blur-xs px-3 sm:px-4 py-1 rounded-full border border-white/20 max-w-[90%] truncate text-center">
+                    Watch Free Masterclass &bull; +13 Years Experience
+                  </span>
+                </div>
+              </div>
+            )}
+          </motion.div>
 
           {/* Primary CTA Area */}
-          <div className="flex flex-col items-center gap-2.5 w-full max-w-md mb-8 sm:mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.55, duration: 0.7 }}
+            className="mt-6 sm:mt-10 flex flex-col items-center justify-center gap-2.5 sm:gap-3 w-full"
+          >
             <button
-              onClick={onBookClick}
-              className="w-full btn-luxury-primary py-3.5 sm:py-4.5 px-6 sm:px-8 text-xs min-[360px]:text-sm sm:text-base tracking-wider font-extrabold shadow-xl hover:shadow-2xl cursor-pointer"
+              onClick={onOpenBooking}
+              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-10 py-3.5 sm:py-5 text-sm sm:text-xl font-bold text-white shadow-xl shadow-primary/30 transition-all hover:bg-primary-hover active:scale-98 cursor-pointer"
             >
-              <span>BOOK YOUR FREE CONSULTATION</span>
-              <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+              <CalendarCheck className="w-5 h-5 sm:w-6 sm:h-6 text-accent flex-shrink-0" />
+              <span className="truncate">BOOK YOUR FREE CONSULTATION</span>
+              <div className="absolute inset-0 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-background opacity-0 transition-opacity group-hover:opacity-100" />
             </button>
 
-            {/* Urgency & Confidence Ticker */}
-            <div className="flex items-center justify-center gap-1.5 min-[360px]:gap-2 text-[10px] min-[360px]:text-[11px] sm:text-xs text-[#635852] flex-wrap text-center">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#10B981] animate-ping" />
-              <span className="font-bold text-[#26201D] bg-white px-2 py-0.5 rounded-full border border-[#EADCD4] shadow-2xs">
-                100% Free 1-on-1 Call
-              </span>
-              <span>•</span>
-              <span>No pushy sales</span>
-              <span>•</span>
-              <span className="text-[#C86A4B] font-extrabold bg-[#FAF0EB] px-2 py-0.5 rounded-full border border-[#F0D9CF]">
-                Only 4 slots left this week
-              </span>
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-4 text-[11px] sm:text-sm text-foreground/75 font-medium mt-1">
+              <span>Personalised guidance</span>
+              <span className="text-primary">&bull;</span>
+              <span>Sustainable habits</span>
+              <span className="text-primary">&bull;</span>
+              <span>No crash diets</span>
             </div>
-          </div>
+          </motion.div>
         </div>
+      </div>
 
-        {/* ── Featured VSL Video Frame ── */}
-        <div className="mt-2 sm:mt-6 w-full">
-          <div className="text-center mb-3">
-            <span className="text-[10px] min-[360px]:text-xs uppercase tracking-widest text-[#A64E33] font-extrabold bg-[#FAF0EB] px-3 py-1 rounded-full border border-[#EADCD4] shadow-2xs">
-              ▶ 3-Minute Video Breakdown With Ankita
-            </span>
-          </div>
-          <VslVideoFrame onBookClick={onBookClick} />
-        </div>
-
-        {/* ── Proof / Trust Anchor (Light Editorial Cards) ── */}
-        <div className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-[#EFE6E0] max-w-4xl mx-auto w-full">
+      {/* Trust Strip below Hero */}
+      <div className="mt-10 sm:mt-16 border-y border-primary/10 bg-white/70 backdrop-blur-xs py-3.5 sm:py-4 w-full">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 text-center">
-            <div className="luxury-card p-3 sm:p-4">
-              <div className="font-serif text-2xl sm:text-3xl font-extrabold text-[#26201D]">
-                13+ Years
-              </div>
-              <div className="text-[10px] min-[360px]:text-xs text-[#C86A4B] font-bold mt-0.5">
-                Women’s Wellness
-              </div>
+            <div className="p-2 bg-white/70 sm:bg-transparent rounded-xl sm:rounded-none border sm:border-0 border-primary/10 sm:border-r sm:border-primary/10">
+              <span className="block text-lg sm:text-2xl font-bold text-secondary font-serif">13+ Years</span>
+              <span className="text-[10px] sm:text-xs text-foreground/70 font-medium">Women&apos;s Wellness</span>
             </div>
-            <div className="luxury-card p-3 sm:p-4">
-              <div className="font-serif text-2xl sm:text-3xl font-extrabold text-[#C86A4B]">
-                Since 2013
-              </div>
-              <div className="text-[10px] min-[360px]:text-xs text-[#635852] font-semibold mt-0.5">
-                Brightfield Established
-              </div>
+            <div className="p-2 bg-white/70 sm:bg-transparent rounded-xl sm:rounded-none border sm:border-0 border-primary/10 sm:border-r sm:border-primary/10">
+              <span className="block text-lg sm:text-2xl font-bold text-secondary font-serif">Since 2013</span>
+              <span className="text-[10px] sm:text-xs text-foreground/70 font-medium">Brightfield Coaching</span>
             </div>
-            <div className="luxury-card p-3 sm:p-4">
-              <div className="font-serif text-2xl sm:text-3xl font-extrabold text-[#26201D]">
-                3 Dimensions
-              </div>
-              <div className="text-[10px] min-[360px]:text-xs text-[#5F8571] font-bold mt-0.5">
-                Fitness • Food • Mind
-              </div>
+            <div className="p-2 bg-white/70 sm:bg-transparent rounded-xl sm:rounded-none border sm:border-0 border-primary/10 sm:border-r sm:border-primary/10">
+              <span className="block text-lg sm:text-2xl font-bold text-secondary font-serif">3 Dimensions</span>
+              <span className="text-[10px] sm:text-xs text-foreground/70 font-medium">Fitness &bull; Food &bull; Mind</span>
             </div>
-            <div className="luxury-card p-3 sm:p-4">
-              <div className="font-serif text-2xl sm:text-3xl font-extrabold text-[#C86A4B]">
-                100%
-              </div>
-              <div className="text-[10px] min-[360px]:text-xs text-[#635852] font-semibold mt-0.5">
-                Personalised Care
-              </div>
+            <div className="p-2 bg-white/70 sm:bg-transparent rounded-xl sm:rounded-none border sm:border-0 border-primary/10">
+              <span className="block text-lg sm:text-2xl font-bold text-secondary font-serif">100% Tailored</span>
+              <span className="text-[10px] sm:text-xs text-foreground/70 font-medium">No Generic Plans</span>
             </div>
           </div>
         </div>
