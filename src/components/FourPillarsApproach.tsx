@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Activity, Apple, RefreshCw, Trophy, Sparkles } from "lucide-react";
+import { Activity, Apple, RefreshCw, Trophy, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface FourPillarsApproachProps {
   onOpenBooking?: () => void;
@@ -43,9 +44,32 @@ const pillars = [
 ];
 
 export default function FourPillarsApproach({}: FourPillarsApproachProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const minSwipeDistance = 50;
+
+  const total = pillars.length;
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % total);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + total) % total);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) nextSlide();
+    else if (distance < -minSwipeDistance) prevSlide();
+  };
+
   return (
     <section id="approach" className="py-7 sm:py-12 bg-white relative overflow-hidden w-full max-w-full">
       <div className="mx-auto max-w-7xl px-3 min-[360px]:px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-5 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -70,8 +94,80 @@ export default function FourPillarsApproach({}: FourPillarsApproachProps) {
           </motion.div>
         </div>
 
-        {/* 4 Pillars Grid - fluid shrink */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4.5 max-w-5xl mx-auto">
+        {/* ── Mobile: Carousel with Arrows (< sm) ── */}
+        <div className="sm:hidden">
+          <div
+            className="overflow-hidden touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {pillars.map((pillar, index) => {
+                const Icon = pillar.icon;
+                return (
+                  <div key={index} className="w-full shrink-0 px-1">
+                    <div className="bg-[#f8f6f2] rounded-2xl p-4 border border-emerald-950/10 relative group min-h-[190px]">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl font-extrabold text-primary">{pillar.num}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-[#032d23] px-2.5 py-0.5 rounded-full shadow-2xs whitespace-nowrap">
+                            {pillar.tag}
+                          </span>
+                        </div>
+                        <div className="w-9 h-9 rounded-xl bg-emerald-950/5 text-primary flex items-center justify-center">
+                          <Icon className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <h3 className="text-sm font-extrabold text-secondary mb-1 leading-snug">{pillar.title}</h3>
+                      <p className="text-[11px] text-foreground/75 leading-relaxed">{pillar.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Arrows + Dots */}
+          <div className="mt-4 flex items-center justify-center gap-4">
+            <button
+              onClick={prevSlide}
+              aria-label="Previous pillar"
+              className="w-10 h-10 rounded-full bg-white border-2 border-[#0d7363]/30 hover:border-primary text-primary hover:bg-emerald-50 shadow-sm flex items-center justify-center active:scale-90 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: total }).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Go to pillar ${idx + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    currentIndex === idx
+                      ? "w-6 bg-primary shadow-xs"
+                      : "w-2.5 bg-emerald-950/20 hover:bg-emerald-950/40"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextSlide}
+              aria-label="Next pillar"
+              className="w-10 h-10 rounded-full bg-white border-2 border-[#0d7363]/30 hover:border-primary text-primary hover:bg-emerald-50 shadow-sm flex items-center justify-center active:scale-90 transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* ── Desktop: Grid (sm and above) ── */}
+        <div className="hidden sm:grid sm:grid-cols-2 gap-3 sm:gap-4.5 max-w-5xl mx-auto">
           {pillars.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
@@ -85,9 +181,7 @@ export default function FourPillarsApproach({}: FourPillarsApproachProps) {
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl sm:text-2xl font-extrabold text-primary">
-                      {pillar.num}
-                    </span>
+                    <span className="text-xl sm:text-2xl font-extrabold text-primary">{pillar.num}</span>
                     <span className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider text-white bg-[#032d23] px-2.5 py-0.5 rounded-full shadow-2xs whitespace-nowrap">
                       {pillar.tag}
                     </span>
@@ -96,14 +190,10 @@ export default function FourPillarsApproach({}: FourPillarsApproachProps) {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                 </div>
-
                 <h3 className="text-sm sm:text-base md:text-lg font-extrabold text-secondary mb-1 leading-snug">
                   {pillar.title}
                 </h3>
-
-                <p className="text-[11px] sm:text-sm text-foreground/75 leading-relaxed">
-                  {pillar.description}
-                </p>
+                <p className="text-[11px] sm:text-sm text-foreground/75 leading-relaxed">{pillar.description}</p>
               </motion.div>
             );
           })}
