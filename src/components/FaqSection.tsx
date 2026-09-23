@@ -2,46 +2,41 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, CalendarCheck, HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 interface FaqSectionProps {
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
 const faqs = [
   {
     question: "Is Brightfield only for women going through menopause?",
     answer:
-      "No. The approach specifically supports women navigating perimenopause (typically beginning in the late 30s or early 40s), menopause, and the broader post-menopausal midlife transition. Wherever you are on this spectrum, the support is tailored to your stage.",
+      "No. It is designed for women 38+ navigating perimenopause, menopause, and beyond. If you are experiencing sudden stubborn weight, fatigue, or mood shifts, our framework meets you right where you are.",
   },
   {
     question: "Do I need to be fit before joining?",
     answer:
-      "Absolutely not. Your approach is carefully adapted to your current fitness level, energy reserves, joint comfort, and daily schedule. We start where you are and build sustainably.",
+      "Not at all. Every movement and habit recommendation is tailored to your current energy reserves, schedule, and joint comfort. We start gentle and build steadily.",
   },
   {
-    question: "Is this just a weight-loss programme?",
+    question: "Do I have to follow a strict or boring diet?",
     answer:
-      "No. While healthy weight balance and losing stubborn midlife visceral fat is often a key goal, Brightfield's approach goes far beyond the weighing scale — focusing equally on functional strength, nourishing nutrition, restorative sleep, and emotional wellbeing.",
+      "Never. We focus on real, wholesome Indian meals balancing protein, fiber, and healthy fats. No starving, no cutting out carbs, and no calorie obsession.",
   },
   {
-    question: "Do I have to follow a strict diet?",
+    question: "How is this different from standard weight loss programs?",
     answer:
-      "No. The focus is on sustainable, nourishing nutrition habits rather than extreme calorie counting or food elimination. You learn how to fuel your changing metabolism with realistic meals you enjoy.",
+      "Most programs prescribe fewer calories and more cardio, which spikes cortisol and worsens hormonal resistance. We focus on hormonal synergy, restful sleep, and preserving lean muscle.",
   },
   {
-    question: "What if I'm already exercising?",
+    question: "Can I join if I'm under medical treatment or taking HRT?",
     answer:
-      "That's great. The goal isn't necessarily to do more exercise — it's to understand what type of movement, resistance training, mobility, and recovery support makes sense for your current hormonal profile.",
-  },
-  {
-    question: "Can I join if I'm already under medical care?",
-    answer:
-      "Brightfield's wellness support should complement — not replace — appropriate medical care. If you have an active medical condition or symptoms requiring clinical diagnosis or hormone replacement therapy (HRT), we always encourage consulting your healthcare professional.",
+      "Yes. Brightfield complements your medical care with nutrition, sleep, and lifestyle coaching. We always encourage alignment with your treating physician.",
   },
 ];
 
-export default function FaqSection({ onOpenBooking }: FaqSectionProps) {
+export default function FaqSection({}: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleOpen = (index: number) => {
@@ -49,59 +44,59 @@ export default function FaqSection({ onOpenBooking }: FaqSectionProps) {
   };
 
   return (
-    <section id="faq" className="py-10 md:py-20 bg-background relative overflow-hidden w-full max-w-full">
-      <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-16">
+    <section id="faq" className="py-7 sm:py-12 bg-[#f8f6f2] relative overflow-hidden w-full max-w-full">
+      <div className="mx-auto max-w-7xl px-3 min-[360px]:px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-5 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-[10px] min-[360px]:text-xs uppercase tracking-wider mb-3">
-              <HelpCircle className="w-3.5 h-3.5 text-accent flex-shrink-0" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-full bg-emerald-950/5 text-primary font-bold text-[11px] sm:text-xs uppercase tracking-wider mb-2 border border-[#0d7363]/20">
+              <HelpCircle className="w-3.5 h-3.5 text-accent shrink-0" />
               <span>Frequently Asked Questions</span>
             </span>
 
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-secondary font-serif leading-tight">
+            <h2 className="text-lg min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-secondary leading-tight">
               Got Questions? We Have Answers.
             </h2>
 
-            <div className="h-1 w-16 sm:w-20 bg-primary rounded-full mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"></div>
+            <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
 
-            <p className="text-xs sm:text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              Everything you need to know about the Brightfield approach to women&apos;s midlife wellness.
+            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
+              Everything you need to know about our doctor-aligned coaching approach.
             </p>
           </motion.div>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="mx-auto max-w-3xl space-y-3 sm:space-y-3.5">
+        {/* FAQ Accordion List - fluid shrink */}
+        <div className="mx-auto max-w-3xl space-y-2">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.04, duration: 0.3 }}
-                className="border border-primary/15 rounded-xl sm:rounded-3xl overflow-hidden bg-white shadow-2xs"
+                transition={{ delay: index * 0.03, duration: 0.25 }}
+                className="border border-emerald-950/10 rounded-2xl sm:rounded-3xl overflow-hidden bg-white shadow-2xs transition-all hover:border-primary/40"
               >
                 <button
                   onClick={() => toggleOpen(index)}
-                  className="w-full px-4 sm:px-6 py-3.5 sm:py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer"
+                  className="w-full px-3.5 min-[360px]:px-5 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between focus:outline-none cursor-pointer gap-2"
                 >
-                  <span className="font-bold text-xs sm:text-base md:text-lg text-secondary font-serif pr-3 leading-snug">
+                  <span className="font-extrabold text-xs sm:text-base md:text-lg text-secondary leading-snug">
                     {faq.question}
                   </span>
                   <div
-                    className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors ${
-                      isOpen ? "bg-primary text-white" : "bg-primary/10 text-primary"
+                    className={`shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors ${
+                      isOpen ? "bg-primary text-white" : "bg-emerald-950/5 text-primary"
                     }`}
                   >
                     <ChevronDown
-                      className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ${
+                      className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -114,9 +109,9 @@ export default function FaqSection({ onOpenBooking }: FaqSectionProps) {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-foreground/80 leading-relaxed text-xs sm:text-base border-t border-primary/10 pt-2.5 sm:pt-3">
+                      <div className="px-3.5 min-[360px]:px-5 sm:px-6 pb-3.5 sm:pb-4 text-foreground/80 leading-relaxed text-xs sm:text-sm border-t border-emerald-950/5 pt-2">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -126,24 +121,6 @@ export default function FaqSection({ onOpenBooking }: FaqSectionProps) {
             );
           })}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-8 sm:mt-16 text-center px-2"
-        >
-          <button
-            onClick={onOpenBooking}
-            className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-lg font-bold text-white shadow-xl shadow-primary/25 hover:bg-primary-hover active:scale-98 transition-all cursor-pointer"
-          >
-            <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-            <span className="truncate">BOOK YOUR FREE CONSULTATION</span>
-            <div className="absolute inset-0 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-background opacity-0 transition-opacity group-hover:opacity-100" />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

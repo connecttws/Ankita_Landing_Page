@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, CalendarCheck } from "lucide-react";
+import { Heart, CalendarCheck, CheckCircle2 } from "lucide-react";
 
 interface NotAloneSectionProps {
   onOpenBooking: () => void;
@@ -9,57 +9,61 @@ interface NotAloneSectionProps {
 
 export default function NotAloneSection({ onOpenBooking }: NotAloneSectionProps) {
   return (
-    <section className="py-10 md:py-20 bg-white relative overflow-hidden w-full max-w-full">
-      {/* Gentle Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+    <section className="py-7 sm:py-12 bg-white relative overflow-hidden w-full max-w-full">
+      {/* Background Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0d7363]/5 via-transparent to-transparent pointer-events-none"></div>
 
-      <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 relative z-10">
+      <div className="mx-auto max-w-7xl px-3 min-[360px]:px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto rounded-2xl sm:rounded-[2.5rem] bg-gradient-to-br from-background via-white to-background border-2 border-primary/20 p-5 sm:p-10 md:p-14 text-center shadow-lg shadow-primary/5"
+          className="max-w-3xl mx-auto rounded-2xl sm:rounded-3xl bg-[#f8f6f2] border border-emerald-950/10 p-4 sm:p-7 text-center shadow-xl shadow-emerald-950/8"
         >
-          <div className="mx-auto mb-4 sm:mb-6 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary shadow-2xs">
-            <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-primary fill-primary/20" />
+          <div className="mx-auto mb-3 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-emerald-950/5 text-primary shadow-2xs border border-[#0d7363]/20">
+            <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary fill-primary/20" />
           </div>
 
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-secondary font-serif mb-4 sm:mb-6 leading-tight">
+          <h2 className="text-lg min-[360px]:text-xl sm:text-3xl font-extrabold tracking-tight text-secondary mb-1.5 leading-tight">
             You Don&apos;t Have To Figure This Out Alone.
           </h2>
 
-          <div className="h-1 w-16 sm:w-20 bg-primary rounded-full mx-auto mb-5 sm:mb-8"></div>
+          <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mb-3"></div>
 
-          <div className="space-y-3 sm:space-y-4 text-xs sm:text-base md:text-lg text-foreground/80 leading-relaxed font-medium max-w-2xl mx-auto px-1">
-            <p>
-              Perimenopause and menopause can feel overwhelming, confusing, and lonely.
-            </p>
-            <p>
-              But you don&apos;t have to keep searching Google late at night every time your body does something unexpected.
-            </p>
-            <p>
-              You don&apos;t have to keep jumping from one extreme diet to another, only to feel exhausted.
-            </p>
-            <p className="font-semibold text-secondary">
-              And you definitely don&apos;t have to believe that feeling constantly tired, gaining stubborn weight, or feeling emotionally disconnected is simply something you have to &ldquo;put up with.&rdquo;
-            </p>
-            <p className="text-primary font-bold text-base sm:text-xl font-serif pt-2">
-              There is a better, gentler way to approach this phase of life. And it starts with understanding your body.
-            </p>
+          <p className="text-xs sm:text-base text-foreground/85 leading-relaxed font-medium max-w-xl mx-auto mb-3.5 px-1">
+            Perimenopause is a profound biological shift — not a personal failure. You don&apos;t have to keep searching Google at 2 AM or jumping between extreme fad diets.
+          </p>
+
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2 text-left max-w-lg mx-auto mb-4">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-[11px] sm:text-sm font-bold text-secondary">No judgment, just real solutions</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-[11px] sm:text-sm font-bold text-secondary">Step-by-step 1-on-1 guidance</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-[11px] sm:text-sm font-bold text-secondary">Real Indian foods you love</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-[11px] sm:text-sm font-bold text-secondary">Sustainable for life, not 30 days</span>
+            </div>
           </div>
 
-          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-primary/15">
+          <div className="pt-3.5 border-t border-emerald-950/10">
             <button
               onClick={onOpenBooking}
-              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-10 py-3.5 sm:py-4 text-sm sm:text-lg font-bold text-white shadow-xl shadow-primary/30 transition-all hover:bg-primary-hover active:scale-98 cursor-pointer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
             >
-              <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-              <span className="truncate">BOOK YOUR FREE CONSULTATION</span>
-              <div className="absolute inset-0 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-white opacity-0 transition-opacity group-hover:opacity-100" />
+              <CalendarCheck className="w-4 h-4 text-white shrink-0" />
+              <span>BOOK YOUR FREE CONSULTATION</span>
             </button>
-            <p className="text-[11px] sm:text-xs text-foreground/60 font-medium mt-2.5">
-              Compassionate 1-on-1 discussion &bull; No obligation &bull; Real answers
+            <p className="text-[10px] sm:text-[11px] text-foreground/60 font-medium mt-2">
+              Compassionate 30-min call &bull; 100% confidential &bull; No pressure
             </p>
           </div>
         </motion.div>

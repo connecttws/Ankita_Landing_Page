@@ -1,73 +1,73 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Sliders, PlayCircle, Award, ArrowRight, CalendarCheck, Sparkles } from "lucide-react";
+import { Search, Sliders, PlayCircle, Award, ArrowRight, Sparkles } from "lucide-react";
 
 interface ProcessStepsProps {
-  onOpenBooking: () => void;
+  onOpenBooking?: () => void;
 }
 
 const steps = [
   {
     step: "STEP 1",
-    title: "Understand",
+    title: "Hormonal Audit",
     description:
-      "We understand your current lifestyle, challenges, health history, goals, and exactly where you are in your perimenopause or menopause journey.",
+      "A deep dive into your symptoms, metabolic history, sleep patterns, and daily lifestyle.",
     icon: Search,
   },
   {
     step: "STEP 2",
-    title: "Personalise",
+    title: "Custom Blueprint",
     description:
-      "Your fitness, nutrition, and wellbeing approach is tailored around YOU. No cookie-cutter calorie charts or unrealistic workout expectations.",
+      "Your bespoke plan balancing Indian nutrition, joint-safe strength, and cortisol reduction.",
     icon: Sliders,
   },
   {
     step: "STEP 3",
-    title: "Implement",
+    title: "1-on-1 Execution",
     description:
-      "You start making realistic, enjoyable changes that fit around your career, family responsibilities, and everyday Indian routine.",
+      "Gradual, enjoyable habit shifts that adapt realistically around your family, career, and travel.",
     icon: PlayCircle,
   },
   {
     step: "STEP 4",
-    title: "Transform",
+    title: "Lifelong Balance",
     description:
-      "Build functional strength, renewed energy, emotional calm, and a lasting, harmonious relationship with your changing body.",
+      "Sustained energy, renewed metabolic rate, and a peaceful relationship with your body.",
     icon: Award,
   },
 ];
 
-export default function ProcessSteps({ onOpenBooking }: ProcessStepsProps) {
+export default function ProcessSteps({}: ProcessStepsProps) {
   return (
-    <section className="py-10 md:py-20 bg-background relative overflow-hidden w-full max-w-full">
-      <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-16">
+    <section className="py-7 sm:py-12 bg-[#f8f6f2] relative overflow-hidden w-full max-w-full">
+      <div className="mx-auto max-w-7xl px-3 min-[360px]:px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-5 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-bold text-[10px] min-[360px]:text-xs uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-accent flex-shrink-0" />
-              <span>Simple, Compassionate Roadmap</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-full bg-emerald-950/5 text-primary font-bold text-[11px] sm:text-xs uppercase tracking-wider mb-2 border border-[#0d7363]/20">
+              <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
+              <span>Structured Roadmap</span>
             </span>
 
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-secondary font-serif leading-tight">
+            <h2 className="text-lg min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-secondary leading-tight">
               What Happens When You Start?
             </h2>
 
-            <div className="h-1 w-16 sm:w-20 bg-primary rounded-full mx-auto mt-3 sm:mt-4 mb-4 sm:mb-6"></div>
+            <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
 
-            <p className="text-xs sm:text-base md:text-lg text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              A structured, step-by-step process designed to remove stress and replace it with clarity, momentum, and sustainable progress.
+            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
+              A step-by-step coaching roadmap designed to replace stress and confusion with clarity and continuous momentum.
             </p>
           </motion.div>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 max-w-6xl mx-auto relative">
+        {/* 4 Steps Grid - fluid shrink */}
+        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-6xl mx-auto">
           {steps.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -76,55 +76,37 @@ export default function ProcessSteps({ onOpenBooking }: ProcessStepsProps) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
-                className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-primary/15 shadow-sm shadow-primary/5 flex flex-col justify-between relative group hover:border-primary/30 hover:-translate-y-1 transition-all"
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                className="bg-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 border border-emerald-950/10 shadow-sm hover:shadow-xl shadow-emerald-950/8 flex flex-col justify-between hover:border-primary/40 hover:-translate-y-1 transition-all group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3.5 sm:mb-5">
-                    <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full">
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[10px] min-[360px]:text-[11px] font-extrabold uppercase tracking-wider text-white bg-[#032d23] px-2.5 py-0.5 rounded-full shadow-2xs whitespace-nowrap">
                       {item.step}
                     </span>
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-secondary text-accent flex items-center justify-center">
-                      <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-950/5 text-primary flex items-center justify-center">
+                      <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-secondary font-serif mb-2 sm:mb-3">
+                  <h3 className="text-sm sm:text-base font-extrabold text-secondary mb-1">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
+                  <p className="text-[11px] sm:text-sm text-foreground/75 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:flex items-center justify-end text-primary/40 mt-3">
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 group-hover:text-primary transition-all" />
+                  <div className="hidden lg:flex items-center justify-end text-emerald-600/40 mt-3">
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 group-hover:text-primary transition-all" />
                   </div>
                 )}
               </motion.div>
             );
           })}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-8 sm:mt-16 text-center px-2"
-        >
-          <button
-            onClick={onOpenBooking}
-            className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-lg font-bold text-white shadow-xl shadow-primary/25 hover:bg-primary-hover active:scale-98 transition-all cursor-pointer"
-          >
-            <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
-            <span className="truncate">BOOK YOUR FREE CONSULTATION</span>
-            <div className="absolute inset-0 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-background opacity-0 transition-opacity group-hover:opacity-100" />
-          </button>
-        </motion.div>
       </div>
     </section>
   );

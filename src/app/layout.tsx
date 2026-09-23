@@ -1,18 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display, Great_Vibes } from "next/font/google";
+import { Inter, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
-const sansFont = Plus_Jakarta_Sans({
-  variable: "--font-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const serifFont = Playfair_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -24,7 +16,7 @@ const signatureFont = Great_Vibes({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#b85068",
+  themeColor: "#0d7363",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -33,7 +25,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Brightfield | Perimenopause & Menopause Wellness for Women 38+ | Ankita Pareek",
   description:
-    "If losing weight suddenly feels impossible after 38, feeling stuck — Brightfield is for you. Whole-woman wellness combining Fitness, Nutrition, and Emotional Wellbeing. Founded by Ankita Pareek. Since 2013.",
+    "If losing weight suddenly feels impossible after 38, Brightfield is here for you. Whole-woman wellness combining Fitness, Nutrition, and Hormonal Wellbeing. Founded by Ankita Pareek. Since 2013.",
   keywords: [
     "perimenopause wellness",
     "menopause fitness coach",
@@ -61,12 +53,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sansFont.variable} ${serifFont.variable} ${signatureFont.variable} scroll-smooth w-full max-w-full overflow-x-hidden`}
+      className={`${inter.variable} ${signatureFont.variable} scroll-smooth w-full max-w-full overflow-x-hidden`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className="antialiased min-h-[100dvh] w-full max-w-full overflow-x-hidden bg-background text-foreground selection:bg-primary/15 selection:text-primary">
+      <body className="antialiased min-h-[100dvh] w-full max-w-full overflow-x-hidden bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary">
         {children}
       </body>
     </html>
