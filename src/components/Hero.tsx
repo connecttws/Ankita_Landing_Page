@@ -80,34 +80,6 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             </p>
           </motion.div>
 
-          {/* Conic Gradient Animated Badges - fully visible, comfortable 2-line layout on mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="mt-3 sm:mt-5 flex flex-row items-stretch justify-center gap-1.5 sm:gap-4 text-[11px] sm:text-sm font-bold text-secondary w-full max-w-xl mx-auto"
-          >
-            <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-sm">
-              <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#0d7363_50%,transparent_100%)] opacity-85" />
-              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-1.5 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
-                <span>Personalized<br className="sm:hidden" /> Guidance</span>
-              </div>
-            </div>
-
-            <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-sm">
-              <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#0d7363_50%,transparent_100%)] opacity-85" />
-              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-1.5 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
-                <span>Sustainable<br className="sm:hidden" /> Habits</span>
-              </div>
-            </div>
-
-            <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-sm">
-              <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#0d7363_50%,transparent_100%)] opacity-85" />
-              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-1.5 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
-                <span>No Crash<br className="sm:hidden" /> Diets</span>
-              </div>
-            </div>
-          </motion.div>
 
           {/* VSL Video Container */}
           <motion.div
