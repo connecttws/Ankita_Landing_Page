@@ -26,8 +26,8 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-40 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-xs py-2 sm:py-3 border-b border-emerald-950/10"
-          : "bg-transparent py-2.5 sm:py-5"
+          ? "bg-white/95 backdrop-blur-md shadow-xs py-1.5 sm:py-2.5 border-b border-emerald-950/10"
+          : "bg-transparent py-1.5 sm:py-3.5"
       }`}
     >
       <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 w-full">

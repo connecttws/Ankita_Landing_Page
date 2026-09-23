@@ -22,7 +22,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
 
   return (
-    <section className="relative overflow-hidden bg-[#f8f6f2] pt-20 pb-6 sm:pt-28 sm:pb-12 w-full max-w-full">
+    <section className="relative overflow-hidden bg-[#f8f6f2] pt-14 pb-4 sm:pt-22 sm:pb-10 w-full max-w-full">
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Subtle Grid Pattern */}
@@ -47,14 +47,14 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         />
       </div>
 
-      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="mx-auto max-w-7xl px-2.5 min-[360px]:px-3 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="mx-auto max-w-4xl text-center">
           {/* Top Eyebrow Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-emerald-950/5 border border-[#0d7363]/25 px-3.5 sm:px-4 py-1 sm:py-1.5 text-xs font-bold text-primary tracking-wide mb-3 shadow-2xs"
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-emerald-950/5 border border-[#0d7363]/25 px-3 sm:px-4 py-0.5 sm:py-1.5 text-[11px] sm:text-xs font-bold text-primary tracking-wide mb-2 sm:mb-2.5 shadow-2xs"
           >
             <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
             <span>Perimenopause &bull; Menopause Wellness 38+</span>
@@ -66,19 +66,17 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className="text-xl min-[360px]:text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-secondary leading-snug sm:leading-[1.15] mb-2 sm:mb-3">
+            <h1 className="text-[20px] min-[360px]:text-[22px] min-[400px]:text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-secondary leading-tight sm:leading-[1.15] mb-1.5 sm:mb-2.5">
               <span className="block sm:inline">Why Weight Loss Suddenly <br className="sm:hidden" />Feels Impossible After 38.</span>{" "}
-              <span className="block text-primary mt-1 sm:mt-2">
+              <span className="block text-primary mt-0.5 sm:mt-1.5">
                 And How to Rebalance <br className="sm:hidden" />Your Body for Good.
               </span>
             </h1>
 
-            <p className="mt-2.5 sm:mt-3 text-xs min-[360px]:text-[13px] sm:text-lg leading-relaxed text-foreground/80 font-medium max-w-2xl mx-auto px-1 sm:px-2">
-              <span>Stop fighting your body with starvation diets.</span>{" "}
-              <br className="sm:hidden" />
-              <span>Rebalance your metabolism, lower cortisol, and rebuild</span>{" "}
-              <br className="sm:hidden" />
-              <span>energy with a doctor-aligned, 1-on-1 coaching framework.</span>
+            <p className="mt-1.5 sm:mt-2.5 text-[11px] min-[360px]:text-[11.5px] min-[400px]:text-[13px] sm:text-base md:text-lg leading-snug sm:leading-relaxed text-foreground/80 font-medium max-w-2xl mx-auto px-0 sm:px-2 tracking-tight sm:tracking-normal">
+              <span className="block sm:inline whitespace-nowrap sm:whitespace-normal">Stop fighting your body with starvation diets.</span>{" "}
+              <span className="block sm:inline whitespace-nowrap sm:whitespace-normal">Rebalance your metabolism, lower cortisol, and rebuild</span>{" "}
+              <span className="block sm:inline whitespace-nowrap sm:whitespace-normal">energy with a doctor-aligned, 1-on-1 coaching framework.</span>
             </p>
           </motion.div>
 
@@ -87,25 +85,25 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mt-4 sm:mt-6 flex flex-row items-stretch justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-bold text-secondary w-full max-w-xl mx-auto"
+            className="mt-3 sm:mt-5 flex flex-row items-stretch justify-center gap-1.5 sm:gap-4 text-[11px] sm:text-sm font-bold text-secondary w-full max-w-xl mx-auto"
           >
             <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-sm">
               <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#0d7363_50%,transparent_100%)] opacity-85" />
-              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-2 sm:px-5 py-2 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
+              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-1.5 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
                 <span>Personalized<br className="sm:hidden" /> Guidance</span>
               </div>
             </div>
 
             <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-sm">
               <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#0d7363_50%,transparent_100%)] opacity-85" />
-              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-2 sm:px-5 py-2 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
+              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-1.5 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
                 <span>Sustainable<br className="sm:hidden" /> Habits</span>
               </div>
             </div>
 
             <div className="relative flex flex-1 sm:flex-none overflow-hidden rounded-xl sm:rounded-full p-[1.5px] shadow-sm">
               <div className="absolute left-1/2 top-1/2 aspect-square w-[250%] -translate-x-1/2 -translate-y-1/2 animate-[spin_3.5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,#0d7363_50%,transparent_100%)] opacity-85" />
-              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-2 sm:px-5 py-2 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
+              <div className="relative flex flex-1 sm:flex-none flex-row items-center justify-center bg-white/95 backdrop-blur px-1.5 sm:px-5 py-1.5 sm:py-2.5 rounded-[10px] sm:rounded-full text-center leading-tight h-full w-full">
                 <span>No Crash<br className="sm:hidden" /> Diets</span>
               </div>
             </div>
@@ -116,7 +114,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
-            className="mt-6 sm:mt-8 relative w-full max-w-2xl mx-auto aspect-video bg-[#032d23] rounded-2xl sm:rounded-3xl shadow-xl shadow-emerald-950/15 overflow-hidden group border-2 sm:border-4 border-white/90"
+            className="mt-3.5 sm:mt-6 relative w-full max-w-2xl mx-auto aspect-video bg-[#032d23] rounded-xl sm:rounded-3xl shadow-xl shadow-emerald-950/15 overflow-hidden group border-2 sm:border-4 border-white/90"
           >
             {isPlayingVideo ? (
               <div className="relative w-full h-full flex flex-col items-center justify-center bg-[#032d23] text-white p-4 text-center">
@@ -170,18 +168,18 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.6 }}
-            className="mt-6 sm:mt-7 flex flex-col items-center justify-center gap-2 w-full"
+            className="mt-3.5 sm:mt-5 flex flex-col items-center justify-center gap-2 w-full"
           >
             <button
               onClick={onOpenBooking}
-              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-white shadow-lg shadow-emerald-950/20 transition-all hover:bg-primary-hover active:scale-98 cursor-pointer"
+              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-9 py-3 sm:py-4 text-xs min-[360px]:text-sm sm:text-base font-bold text-white shadow-lg shadow-emerald-950/20 transition-all hover:bg-primary-hover active:scale-98 cursor-pointer"
             >
               <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
               <span>BOOK YOUR FREE CONSULTATION</span>
             </button>
 
             {/* Micro trust row */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3.5 text-xs text-foreground/80 font-semibold whitespace-nowrap">
+            <div className="flex items-center justify-center gap-1.5 sm:gap-3.5 text-[10px] min-[360px]:text-[11px] sm:text-xs text-foreground/80 font-semibold flex-wrap sm:flex-nowrap">
               <span>Personalized guidance</span>
               <span className="text-primary">&bull;</span>
               <span>Sustainable habits</span>
@@ -193,10 +191,10 @@ export default function Hero({ onOpenBooking }: HeroProps) {
       </div>
 
       {/* Moving Carousel for "13+ Years" Trust Section */}
-      <div className="mt-8 sm:mt-12 border-y border-emerald-950/10 bg-white py-3 sm:py-4 w-full overflow-hidden relative">
+      <div className="mt-5 sm:mt-8 border-y border-emerald-950/10 bg-white py-2.5 sm:py-3.5 w-full overflow-hidden relative">
         {/* Left & Right Gradient Shadows */}
-        <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
         <motion.div
           className="flex items-center gap-3 sm:gap-4 shrink-0 will-change-transform"
