@@ -34,7 +34,7 @@ export default function Footer({ onOpenBooking }: FooterProps) {
 
           <button
             onClick={onOpenBooking}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-7 sm:px-9 py-3.5 text-xs sm:text-sm font-extrabold text-white shadow-xl shadow-emerald-950/30 transition-all cursor-pointer"
+            className="inline-flex w-full max-w-[310px] min-[380px]:max-w-[340px] sm:w-auto sm:max-w-none items-center justify-center gap-2.5 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-9 py-3.5 text-xs sm:text-sm font-extrabold text-white shadow-xl shadow-emerald-950/30 transition-all cursor-pointer"
           >
             <span>START YOUR BRIGHTFIELD JOURNEY</span>
             <ArrowRight className="w-4 h-4 text-white" />

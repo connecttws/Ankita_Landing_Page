@@ -140,7 +140,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           >
             <button
               onClick={onOpenBooking}
-              className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-9 py-3 sm:py-4 text-xs min-[360px]:text-sm sm:text-base font-bold text-white shadow-lg shadow-emerald-950/20 transition-all hover:bg-primary-hover active:scale-98 cursor-pointer"
+              className="group relative inline-flex w-full max-w-[310px] min-[380px]:max-w-[340px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-9 py-3.5 sm:py-4 text-xs min-[360px]:text-sm sm:text-base font-bold text-white shadow-lg shadow-emerald-950/20 transition-all hover:bg-primary-hover active:scale-98 cursor-pointer"
             >
               <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
               <span>BOOK YOUR FREE CONSULTATION</span>

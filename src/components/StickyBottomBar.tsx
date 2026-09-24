@@ -41,7 +41,7 @@ export default function StickyBottomBar({ onOpenBooking }: StickyBottomBarProps)
 
             <button
               onClick={onOpenBooking}
-              className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-primary hover:bg-primary-hover px-3.5 py-1.5 min-[360px]:px-4 min-[360px]:py-2 text-xs font-bold text-white shadow-md active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+              className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-primary hover:bg-primary-hover px-4 py-2 min-[360px]:px-5 min-[360px]:py-2.5 text-xs sm:text-sm font-bold text-white shadow-md active:scale-95 transition-all cursor-pointer whitespace-nowrap"
             >
               <CalendarCheck className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Book Free Call</span>
