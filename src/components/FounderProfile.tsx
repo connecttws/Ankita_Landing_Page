@@ -101,9 +101,9 @@ export default function FounderProfile({ onOpenBooking }: FounderProfileProps) {
             <div className="mt-4 pt-3.5 border-t border-emerald-900/60">
               <button
                 onClick={onOpenBooking}
-                className="inline-flex w-full max-w-[310px] min-[380px]:max-w-[340px] sm:w-auto sm:max-w-none items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-7 py-3 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-xl transition-all cursor-pointer"
+                className="inline-flex w-full max-w-[340px] min-[380px]:max-w-[370px] sm:w-auto sm:max-w-none items-center justify-center gap-2.5 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-7 sm:px-10 py-4 sm:py-4.5 text-xs min-[360px]:text-sm sm:text-base font-extrabold text-white shadow-xl shadow-emerald-950/20 hover:shadow-2xl transition-all cursor-pointer tracking-wide"
               >
-                <CalendarCheck className="w-4 h-4 text-white shrink-0" />
+                <CalendarCheck className="w-4 h-4 sm:w-5 sm:h-5 text-white shrink-0" />
                 <span>BOOK YOUR FREE CONSULTATION</span>
               </button>
             </div>
