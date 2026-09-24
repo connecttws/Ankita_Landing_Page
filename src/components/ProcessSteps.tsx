@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Sliders, PlayCircle, Award, ArrowRight, Sparkles } from "lucide-react";
+import { Search, Sliders, PlayCircle, Award, ArrowRight, Sparkles, CalendarCheck } from "lucide-react";
 
 interface ProcessStepsProps {
   onOpenBooking?: () => void;
@@ -10,35 +10,35 @@ interface ProcessStepsProps {
 const steps = [
   {
     step: "STEP 1",
-    title: "Hormonal Audit",
+    title: "Understand",
     description:
-      "A deep dive into your symptoms, metabolic history, sleep patterns, and daily lifestyle.",
+      "We understand your current lifestyle, challenges, goals and where you are in your menopause journey.",
     icon: Search,
   },
   {
     step: "STEP 2",
-    title: "Custom Blueprint",
+    title: "Personalise",
     description:
-      "Your bespoke plan balancing Indian nutrition, joint-safe strength, and cortisol reduction.",
+      "Your fitness, nutrition and wellbeing approach is tailored around YOU.",
     icon: Sliders,
   },
   {
     step: "STEP 3",
-    title: "1-on-1 Execution",
+    title: "Implement",
     description:
-      "Gradual, enjoyable habit shifts that adapt realistically around your family, career, and travel.",
+      "You start making realistic changes that fit around your work, family and everyday life.",
     icon: PlayCircle,
   },
   {
     step: "STEP 4",
-    title: "Lifelong Balance",
+    title: "Transform",
     description:
-      "Sustained energy, renewed metabolic rate, and a peaceful relationship with your body.",
+      "Build strength, confidence, better habits and a healthier relationship with your changing body.",
     icon: Award,
   },
 ];
 
-export default function ProcessSteps({}: ProcessStepsProps) {
+export default function ProcessSteps({ onOpenBooking }: ProcessStepsProps) {
   return (
     <section className="py-7 sm:py-12 bg-[#f8f6f2] relative overflow-hidden w-full max-w-full">
       <div className="mx-auto max-w-7xl px-3 min-[360px]:px-4 sm:px-6 lg:px-8">
@@ -59,10 +59,6 @@ export default function ProcessSteps({}: ProcessStepsProps) {
             </h2>
 
             <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
-
-            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              A step-by-step coaching roadmap designed to replace stress and confusion with clarity and continuous momentum.
-            </p>
           </motion.div>
         </div>
 
@@ -89,7 +85,7 @@ export default function ProcessSteps({}: ProcessStepsProps) {
                     </div>
                   </div>
 
-                  <h3 className="text-sm sm:text-base font-extrabold text-secondary mb-1">
+                  <h3 className="text-base font-extrabold text-secondary mb-1.5">
                     {item.title}
                   </h3>
 
@@ -107,6 +103,23 @@ export default function ProcessSteps({}: ProcessStepsProps) {
             );
           })}
         </div>
+
+        {/* Section CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-6 sm:mt-8 text-center"
+        >
+          <button
+            onClick={onOpenBooking}
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-8 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
+          >
+            <CalendarCheck className="w-4 h-4 text-white shrink-0" />
+            <span>BOOK YOUR FREE CONSULTATION</span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );

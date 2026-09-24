@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, SunMedium, ChevronLeft, ChevronRight } from "lucide-react";
+import { SunMedium, ChevronLeft, ChevronRight, CalendarCheck } from "lucide-react";
 
 interface TransformationSectionProps {
   onOpenBooking?: () => void;
@@ -11,27 +11,39 @@ interface TransformationSectionProps {
 const transformations = [
   {
     icon: "☀️",
-    title: "Sustained All-Day Energy",
-    detail: "No afternoon slump or morning exhaustion. Clean, vibrant stamina from dawn until bedtime.",
+    text: "Having more energy throughout the day",
+  },
+  {
+    icon: "💪",
+    text: "Feeling stronger and more capable in your body",
   },
   {
     icon: "👗",
-    title: "Effortless Clothes Confidence",
-    detail: "Releasing stubborn belly weight and feeling radiant, comfortable, and proud in your favorite outfits.",
+    text: "Feeling comfortable and confident in your clothes",
   },
   {
-    icon: "😴",
-    title: "Deep, Restorative Sleep",
-    detail: "Sleeping peacefully through the night without 3 AM wakeups, and greeting each morning fully refreshed.",
+    icon: "🥗",
+    text: "Eating without constantly worrying about food",
   },
   {
     icon: "🧠",
-    title: "Mental Clarity & Calm Mind",
-    detail: "Dissolving brain fog, calming hormonal anxiety, and enjoying peaceful meals without guilt or calorie obsession.",
+    text: "Feeling mentally clearer and emotionally more balanced",
+  },
+  {
+    icon: "😴",
+    text: "Building better sleep and recovery habits",
+  },
+  {
+    icon: "❤️",
+    text: "Understanding your body instead of constantly fighting it",
+  },
+  {
+    icon: "✨",
+    text: "And finally feeling like YOU are back in charge.",
   },
 ];
 
-export default function TransformationSection({}: TransformationSectionProps) {
+export default function TransformationSection({ onOpenBooking }: TransformationSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -76,19 +88,15 @@ export default function TransformationSection({}: TransformationSectionProps) {
 
             <h2 className="text-lg min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-secondary leading-tight">
               What Could Change For You?<br />
-              <span className="text-primary">Imagine Waking Up Feeling Like You Again.</span>
+              <span className="text-primary">Imagine Waking Up And…</span>
             </h2>
 
             <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
-
-            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              Midlife does not have to be a slow decline. With doctor-aligned coaching and hormonal synergy, it becomes your most vibrant chapter.
-            </p>
           </motion.div>
         </div>
 
-        {/* ── Mobile: Carousel with Arrows (< min-[480px]) ── */}
-        <div className="min-[480px]:hidden">
+        {/* ── Mobile: Carousel with Arrows (< sm) ── */}
+        <div className="sm:hidden">
           <div
             className="overflow-hidden touch-pan-y"
             onTouchStart={handleTouchStart}
@@ -101,25 +109,20 @@ export default function TransformationSection({}: TransformationSectionProps) {
             >
               {transformations.map((item, index) => (
                 <div key={index} className="w-full shrink-0 px-1">
-                  <div className="rounded-2xl p-4 bg-[#f8f6f2] border border-emerald-950/10 flex flex-col justify-between min-h-[185px]">
-                    <div>
-                      <span className="text-xl block mb-2.5 p-2 bg-white rounded-xl w-fit shadow-2xs border border-emerald-950/10">
-                        {item.icon}
-                      </span>
-                      <h3 className="text-sm font-extrabold text-secondary mb-1 leading-snug">{item.title}</h3>
-                      <p className="text-[11px] text-foreground/75 leading-relaxed">{item.detail}</p>
-                    </div>
-                    <div className="mt-3.5 pt-2.5 border-t border-emerald-950/5 flex items-center gap-1.5 text-[10px] font-bold text-primary uppercase">
-                      <Sparkles className="w-3 h-3 text-accent shrink-0" />
-                      <span>Lasting Habit Shift</span>
-                    </div>
+                  <div className="rounded-2xl p-4 bg-[#f8f6f2] border border-emerald-950/10 flex items-center gap-3.5 min-h-[96px] shadow-2xs">
+                    <span className="text-2xl p-2 bg-white rounded-xl shadow-2xs border border-emerald-950/10 shrink-0 select-none">
+                      {item.icon}
+                    </span>
+                    <p className="text-xs min-[360px]:text-sm font-bold text-secondary leading-snug">
+                      {item.text}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Arrows + Dots */}
+          {/* Arrows + Counter */}
           <div className="mt-4 flex items-center justify-center gap-4">
             <button
               onClick={prevSlide}
@@ -129,20 +132,9 @@ export default function TransformationSection({}: TransformationSectionProps) {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-1.5">
-              {Array.from({ length: total }).map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    currentIndex === idx
-                      ? "w-6 bg-primary shadow-xs"
-                      : "w-2.5 bg-emerald-950/20 hover:bg-emerald-950/40"
-                  }`}
-                />
-              ))}
-            </div>
+            <span className="text-xs font-extrabold text-secondary tracking-wider">
+              {currentIndex + 1} / {total}
+            </span>
 
             <button
               onClick={nextSlide}
@@ -154,31 +146,43 @@ export default function TransformationSection({}: TransformationSectionProps) {
           </div>
         </div>
 
-        {/* ── Desktop: Grid (min-[480px] and above) ── */}
-        <div className="hidden min-[480px]:grid min-[480px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-6xl mx-auto">
+        {/* ── Desktop: Grid (sm and above) ── */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-6xl mx-auto">
           {transformations.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.35 }}
-              className="rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-[#f8f6f2] border border-emerald-950/10 hover:border-primary/40 hover:shadow-xl hover:shadow-emerald-950/8 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              transition={{ delay: index * 0.04, duration: 0.3 }}
+              className="rounded-2xl p-4 bg-[#f8f6f2] border border-emerald-950/10 hover:border-primary/40 hover:shadow-md transition-all flex items-center gap-3.5"
             >
-              <div>
-                <span className="text-xl sm:text-2xl block mb-2.5 p-2 bg-white rounded-xl w-fit shadow-2xs border border-emerald-950/10">
-                  {item.icon}
-                </span>
-                <h3 className="text-sm sm:text-base font-extrabold text-secondary mb-1 leading-snug">{item.title}</h3>
-                <p className="text-[11px] sm:text-sm text-foreground/75 leading-relaxed">{item.detail}</p>
-              </div>
-              <div className="mt-3.5 pt-2.5 border-t border-emerald-950/5 flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-primary uppercase">
-                <Sparkles className="w-3 h-3 text-accent shrink-0" />
-                <span>Lasting Habit Shift</span>
-              </div>
+              <span className="text-2xl p-2 bg-white rounded-xl shadow-2xs border border-emerald-950/10 shrink-0 select-none">
+                {item.icon}
+              </span>
+              <p className="text-xs sm:text-sm font-bold text-secondary leading-snug">
+                {item.text}
+              </p>
             </motion.div>
           ))}
         </div>
+
+        {/* Section CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-6 sm:mt-8 text-center"
+        >
+          <button
+            onClick={onOpenBooking}
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-8 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
+          >
+            <CalendarCheck className="w-4 h-4 text-white shrink-0" />
+            <span>BOOK YOUR FREE CONSULTATION</span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );

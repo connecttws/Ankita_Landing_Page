@@ -64,49 +64,37 @@ export default function FounderProfile({ onOpenBooking }: FounderProfileProps) {
             className="w-full lg:w-1/2 text-center lg:text-left text-white"
           >
             <span className="text-[10.5px] min-[360px]:text-[11px] uppercase font-bold tracking-widest text-accent mb-1 inline-block">
-              Your Guide Through The Transition
+              Your Guide Through The Change.
             </span>
 
-            <h2 className="text-xl min-[360px]:text-2xl sm:text-4xl font-extrabold tracking-tight mb-1">
+            <h2 className="text-xl min-[360px]:text-2xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Meet <span className="font-signature font-normal text-3xl min-[360px]:text-4xl sm:text-5xl text-accent block lg:inline lg:ml-2">Ankita Pareek</span>
             </h2>
 
-            <h3 className="text-[11px] sm:text-xs font-semibold text-emerald-300 tracking-wider uppercase mb-3 flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2">
-              <span>Founder of Brightfield</span>
-              <span className="opacity-50">&bull;</span>
-              <span>Women&apos;s Midlife Wellness Specialist</span>
-            </h3>
-
-            <div className="space-y-2.5 text-white/85 text-xs sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
-              <p>
-                For over 13 years, I&apos;ve watched capable women work relentlessly to stay healthy — only to feel frustrated when their bodies begin responding differently after 38.
+            <div className="space-y-3 text-white/90 text-xs sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="font-semibold text-accent text-sm sm:text-base">
+                Hi, I&apos;m Ankita Pareek — Founder of Brightfield.
               </p>
               <p>
-                At Brightfield, we integrate <strong className="text-white">Fitness, Hormonal Nutrition, and Nervous System Recovery</strong>. It isn&apos;t just about the scale — it&apos;s about waking up energized, feeling strong, and reclaiming your confidence.
+                For years, I&apos;ve seen women work incredibly hard to become healthier — only to feel frustrated when their bodies begin responding differently in their 40s.
               </p>
-
-              {/* Short Benefits Checklist - fluid shrink */}
-              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-1.5 pt-1 pb-1 text-left">
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-accent shrink-0" />
-                  <span className="text-[11px] sm:text-sm text-white/90">Waking up with vibrant energy</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-accent shrink-0" />
-                  <span className="text-[11px] sm:text-sm text-white/90">Rebuilding lean strength</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-accent shrink-0" />
-                  <span className="text-[11px] sm:text-sm text-white/90">Fitting comfortably in your clothes</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 text-accent shrink-0" />
-                  <span className="text-[11px] sm:text-sm text-white/90">Calmer, peaceful sleep at night</span>
-                </div>
+              <p>
+                That&apos;s why I believe women shouldn&apos;t have to choose between looking after their body, their mind and their life.
+              </p>
+              <p className="text-emerald-300 font-semibold">
+                At Brightfield, we bring these pieces together.<br />
+                Fitness. Nutrition. Mindset. Emotional wellbeing.
+              </p>
+              <div className="space-y-1 text-white/90 py-1 pl-2 border-l-2 border-accent/40">
+                <p>Because feeling healthy isn&apos;t just about the number on the weighing scale.</p>
+                <p>&bull; It&apos;s about waking up with energy.</p>
+                <p>&bull; Feeling strong in your body.</p>
+                <p>&bull; Feeling confident in your clothes.</p>
+                <p>&bull; Having a calmer relationship with food.</p>
+                <p className="font-semibold text-accent">&bull; And feeling like yourself again.</p>
               </div>
-
-              <p className="italic text-emerald-200 text-[11px] sm:text-sm pt-1">
-                &ldquo;Since 2013, Brightfield has been built on one principle: Your health should support your life, not consume it.&rdquo;
+              <p className="italic text-emerald-200 text-xs sm:text-sm pt-1 border-t border-emerald-900/60">
+                &ldquo;Since 2013, Brightfield has been built around one simple belief: A healthier body should help you live a better life.&rdquo;
               </p>
             </div>
 

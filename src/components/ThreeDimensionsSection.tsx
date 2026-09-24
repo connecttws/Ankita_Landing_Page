@@ -11,23 +11,20 @@ interface ThreeDimensionsSectionProps {
 const dimensions = [
   {
     title: "FITNESS",
-    tagline: "Move for Strength & Vitality",
     description:
-      "Targeted strength and mobility that protects bones, builds lean muscle, and burns fat without high-cortisol burnout.",
+      "Build strength, mobility, stamina & confidence with movement designed for your changing body.",
     icon: Dumbbell,
   },
   {
     title: "NUTRITION",
-    tagline: "Nourish Without Deprivation",
     description:
-      "Real, wholesome Indian meals that stabilize blood sugar and balance estrogen — no extreme calorie cutting.",
+      "Learn how to nourish your body without extreme diets, food restrictions or constantly counting calories.",
     icon: Utensils,
   },
   {
-    title: "MIND & SLEEP",
-    tagline: "Lower Cortisol & Reset",
+    title: "MIND & EMOTIONAL WELLBEING",
     description:
-      "Tools to manage midlife stress, calm emotional cravings, and restore 7-8 hours of deep, unbroken sleep.",
+      "Work on stress, emotional eating, confidence, mindset and the mental load that often gets overlooked.",
     icon: Brain,
   },
 ];
@@ -84,9 +81,12 @@ export default function ThreeDimensionsSection({ onOpenBooking }: ThreeDimension
 
             <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
 
-            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              Perimenopause affects movement, food metabolism, sleep, and emotional recovery. We guide you across all 3 dimensions simultaneously.
-            </p>
+            <div className="text-xs sm:text-base text-foreground/85 font-medium leading-relaxed max-w-2xl mx-auto px-1 space-y-1">
+              <p>Perimenopause and menopause aren&apos;t simply about changing hormones.</p>
+              <p>They can affect how you move, eat, sleep, think, feel and recover.</p>
+              <p>That&apos;s why Brightfield doesn&apos;t believe in giving you another generic diet or workout plan.</p>
+              <p className="font-bold text-secondary">We work on the woman as a whole.</p>
+            </div>
           </motion.div>
         </div>
 
@@ -111,14 +111,11 @@ export default function ThreeDimensionsSection({ onOpenBooking }: ThreeDimension
                         <div className="w-11 h-11 rounded-xl bg-emerald-950/5 text-primary flex items-center justify-center mb-3.5 shadow-2xs">
                           <Icon className="w-5 h-5" />
                         </div>
-                        <span className="text-[10px] font-bold text-accent tracking-wider uppercase block mb-1">
-                          {dim.tagline}
-                        </span>
-                        <h3 className="text-base font-extrabold text-secondary mb-1.5">{dim.title}</h3>
+                        <h3 className="text-base font-extrabold text-secondary mb-2">{dim.title}</h3>
                         <p className="text-[11px] text-foreground/75 leading-relaxed">{dim.description}</p>
                       </div>
                       <div className="mt-4 pt-3 border-t border-emerald-950/5 flex items-center text-[10px] font-bold text-primary tracking-wide uppercase">
-                        <span>Dimension 0{index + 1} &bull; 100% Tailored</span>
+                        <span>Dimension 0{index + 1} &bull; 100% Personalised</span>
                       </div>
                     </div>
                   </div>
@@ -179,14 +176,11 @@ export default function ThreeDimensionsSection({ onOpenBooking }: ThreeDimension
                   <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-950/5 text-primary flex items-center justify-center mb-3.5 shadow-2xs group-hover:scale-105 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-[10px] min-[360px]:text-[11px] sm:text-xs font-bold text-accent tracking-wider uppercase block mb-1">
-                    {dim.tagline}
-                  </span>
-                  <h3 className="text-base sm:text-xl font-extrabold text-secondary mb-1.5">{dim.title}</h3>
+                  <h3 className="text-base sm:text-lg font-extrabold text-secondary mb-2">{dim.title}</h3>
                   <p className="text-[11px] sm:text-sm text-foreground/75 leading-relaxed">{dim.description}</p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-emerald-950/5 flex items-center text-[10px] sm:text-xs font-bold text-primary tracking-wide uppercase">
-                  <span>Dimension 0{index + 1} &bull; 100% Tailored</span>
+                  <span>Dimension 0{index + 1} &bull; 100% Personalised</span>
                 </div>
               </motion.div>
             );
@@ -199,17 +193,14 @@ export default function ThreeDimensionsSection({ onOpenBooking }: ThreeDimension
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-6 sm:mt-8 bg-gradient-to-r from-[#032d23] via-[#053b2f] to-[#0d7363] text-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 text-center max-w-4xl mx-auto shadow-xl shadow-emerald-950/20"
+          className="mt-6 sm:mt-8 bg-gradient-to-r from-[#032d23] via-[#053b2f] to-[#0d7363] text-white rounded-2xl sm:rounded-3xl p-4 sm:p-7 text-center max-w-3xl mx-auto shadow-xl shadow-emerald-950/20"
         >
-          <p className="text-base sm:text-xl font-extrabold text-accent mb-1">
-            One woman. Three dimensions. One personalized blueprint.
-          </p>
-          <p className="text-xs sm:text-sm text-white/85 max-w-xl mx-auto mb-4 leading-relaxed">
-            When your movement, food, and mindset work together, hormonal balance and sustainable weight loss become effortless.
+          <p className="text-base sm:text-xl font-extrabold text-white mb-4">
+            One woman. Three dimensions. One personalised approach.
           </p>
           <button
             onClick={onOpenBooking}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
           >
             <CalendarCheck className="w-4 h-4 text-white shrink-0" />
             <span>BOOK YOUR FREE CONSULTATION</span>

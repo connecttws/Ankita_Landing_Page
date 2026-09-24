@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle, CalendarCheck } from "lucide-react";
 
 interface FaqSectionProps {
   onOpenBooking?: () => void;
@@ -12,31 +12,36 @@ const faqs = [
   {
     question: "Is Brightfield only for women going through menopause?",
     answer:
-      "No. It is designed for women 38+ navigating perimenopause, menopause, and beyond. If you are experiencing sudden stubborn weight, fatigue, or mood shifts, our framework meets you right where you are.",
+      "No. The approach can support women navigating perimenopause, menopause and the broader midlife transition.",
   },
   {
     question: "Do I need to be fit before joining?",
     answer:
-      "Not at all. Every movement and habit recommendation is tailored to your current energy reserves, schedule, and joint comfort. We start gentle and build steadily.",
+      "Absolutely not. Your approach can be adapted to your current fitness level and lifestyle.",
   },
   {
-    question: "Do I have to follow a strict or boring diet?",
+    question: "Is this just a weight-loss programme?",
     answer:
-      "Never. We focus on real, wholesome Indian meals balancing protein, fiber, and healthy fats. No starving, no cutting out carbs, and no calorie obsession.",
+      "No. Weight management can be one goal, but Brightfield's approach goes beyond the weighing scale — focusing on fitness, nutrition and mental/emotional wellbeing.",
   },
   {
-    question: "How is this different from standard weight loss programs?",
+    question: "Do I have to follow a strict diet?",
     answer:
-      "Most programs prescribe fewer calories and more cardio, which spikes cortisol and worsens hormonal resistance. We focus on hormonal synergy, restful sleep, and preserving lean muscle.",
+      "The focus is on sustainable nutrition habits rather than extreme restriction.",
   },
   {
-    question: "Can I join if I'm under medical treatment or taking HRT?",
+    question: "What if I'm already exercising?",
     answer:
-      "Yes. Brightfield complements your medical care with nutrition, sleep, and lifestyle coaching. We always encourage alignment with your treating physician.",
+      "That's great. The goal isn't necessarily to do more exercise — it's to understand what type of movement, nutrition and recovery support makes sense for your current stage of life.",
+  },
+  {
+    question: "Can I join if I'm already under medical care?",
+    answer:
+      "Brightfield's wellness support should complement—not replace—appropriate medical care. If you have a medical condition or symptoms requiring clinical assessment, consult your healthcare professional.",
   },
 ];
 
-export default function FaqSection({}: FaqSectionProps) {
+export default function FaqSection({ onOpenBooking }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleOpen = (index: number) => {
@@ -55,18 +60,14 @@ export default function FaqSection({}: FaqSectionProps) {
           >
             <span className="inline-flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-full bg-emerald-950/5 text-primary font-bold text-[11px] sm:text-xs uppercase tracking-wider mb-2 border border-[#0d7363]/20">
               <HelpCircle className="w-3.5 h-3.5 text-accent shrink-0" />
-              <span>Frequently Asked Questions</span>
+              <span>Questions &amp; Answers</span>
             </span>
 
-            <h2 className="text-lg min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-secondary leading-tight">
-              Got Questions? We Have Answers.
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-secondary leading-tight">
+              FAQ
             </h2>
 
             <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
-
-            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              Everything you need to know about our doctor-aligned coaching approach.
-            </p>
           </motion.div>
         </div>
 
@@ -121,6 +122,23 @@ export default function FaqSection({}: FaqSectionProps) {
             );
           })}
         </div>
+
+        {/* Section CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-6 sm:mt-8 text-center"
+        >
+          <button
+            onClick={onOpenBooking}
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-8 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
+          >
+            <CalendarCheck className="w-4 h-4 text-white shrink-0" />
+            <span>BOOK YOUR FREE CONSULTATION</span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );

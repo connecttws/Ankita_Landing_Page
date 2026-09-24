@@ -54,10 +54,10 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-emerald-950/5 border border-[#0d7363]/25 px-3 sm:px-4 py-0.5 sm:py-1.5 text-[11px] sm:text-xs font-bold text-primary tracking-wide mb-2 sm:mb-2.5 shadow-2xs"
+            className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-emerald-950/5 border border-[#0d7363]/25 px-3 sm:px-4 py-0.5 sm:py-1.5 text-[10px] min-[360px]:text-[11px] sm:text-xs font-bold text-primary tracking-wider mb-2.5 sm:mb-3 shadow-2xs uppercase"
           >
             <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
-            <span>Perimenopause &bull; Menopause Wellness 38+</span>
+            <span>PERIMENOPAUSE &amp; MENOPAUSE WELLNESS FOR WOMEN 38+</span>
           </motion.div>
 
           {/* Main Headline */}
@@ -66,7 +66,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h1 className="text-[20px] min-[360px]:text-[22px] min-[400px]:text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-secondary leading-tight sm:leading-[1.15] mb-1.5 sm:mb-2.5">
+            <h1 className="text-[20px] min-[360px]:text-[22px] min-[400px]:text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-secondary leading-tight sm:leading-[1.15] mb-2 sm:mb-3">
               <span className="block">
                 If losing weight suddenly <br className="sm:hidden" />feels impossible after 38
               </span>{" "}
@@ -74,12 +74,6 @@ export default function Hero({ onOpenBooking }: HeroProps) {
                 feeling stuck, this is for you
               </span>
             </h1>
-
-            <p className="mt-1.5 sm:mt-2.5 text-[11px] min-[360px]:text-[11.5px] min-[400px]:text-[13px] sm:text-base md:text-lg leading-snug sm:leading-relaxed text-foreground/80 font-medium max-w-2xl mx-auto px-0 sm:px-2 tracking-tight sm:tracking-normal">
-              <span className="block sm:inline whitespace-nowrap sm:whitespace-normal">Stop fighting your body with starvation diets.</span>{" "}
-              <span className="block sm:inline whitespace-nowrap sm:whitespace-normal">Rebalance your metabolism, lower cortisol, and rebuild</span>{" "}
-              <span className="block sm:inline whitespace-nowrap sm:whitespace-normal">energy with a doctor-aligned, 1-on-1 coaching framework.</span>
-            </p>
           </motion.div>
 
 
@@ -88,7 +82,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
-            className="mt-3.5 sm:mt-6 relative w-full max-w-2xl mx-auto aspect-video bg-[#032d23] rounded-xl sm:rounded-3xl shadow-xl shadow-emerald-950/15 overflow-hidden group border-2 sm:border-4 border-white/90"
+            className="mt-3 sm:mt-6 relative w-full max-w-2xl mx-auto aspect-video bg-[#032d23] rounded-xl sm:rounded-3xl shadow-xl shadow-emerald-950/15 overflow-hidden group border-2 sm:border-4 border-white/90"
           >
             {isPlayingVideo ? (
               <div className="relative w-full h-full flex flex-col items-center justify-center bg-[#032d23] text-white p-4 text-center">
@@ -97,7 +91,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
                   Special Video Presentation by Ankita Pareek
                 </h4>
                 <p className="text-xs sm:text-sm text-white/80 max-w-md mb-3">
-                  Discover how hormonal shifts after 38 impact fat storage, sleep, and mood — and how our 3-dimension framework restores balance.
+                  Discover how our whole-woman approach restores your energy, sleep, and natural weight balance.
                 </p>
                 <button
                   onClick={onOpenBooking}
@@ -129,8 +123,8 @@ export default function Hero({ onOpenBooking }: HeroProps) {
                       <Play className="w-4 h-4 sm:w-7 sm:h-7 fill-white ml-0.5 sm:ml-1" />
                     </div>
                   </div>
-                  <span className="mt-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white bg-[#032d23]/90 backdrop-blur-xs px-3.5 py-1 rounded-full border border-white/20">
-                    Watch Free Overview &bull; 13+ Years Experience
+                  <span className="mt-2.5 text-[10.5px] sm:text-xs font-bold tracking-wide text-white bg-[#032d23]/90 backdrop-blur-xs px-3.5 py-1 rounded-full border border-white/20">
+                    +13 Years | Women’s Wellness &amp; Fitness
                   </span>
                 </div>
               </div>
@@ -154,7 +148,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
 
             {/* Micro trust row */}
             <div className="flex items-center justify-center gap-1.5 sm:gap-3.5 text-[10px] min-[360px]:text-[11px] sm:text-xs text-foreground/80 font-semibold flex-wrap sm:flex-nowrap">
-              <span>Personalized guidance</span>
+              <span>Personalised guidance</span>
               <span className="text-primary">&bull;</span>
               <span>Sustainable habits</span>
               <span className="text-primary">&bull;</span>

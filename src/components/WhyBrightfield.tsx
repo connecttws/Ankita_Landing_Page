@@ -8,12 +8,12 @@ interface WhyBrightfieldProps {
 }
 
 const differentiators = [
-  "Fitness + Nutrition + Nervous System Recovery",
-  "100% personalized to your hormonal stage",
-  "Designed around your real cultural foods & lifestyle",
-  "Focuses on lean muscle & resting metabolic rate",
-  "Dedicated 1-on-1 accountability & guidance",
-  "Sustainable long-term habits — zero crash diets",
+  "Fitness + Nutrition + Emotional Wellbeing",
+  "Personalised, not generic",
+  "Designed around your real lifestyle",
+  "Focused on strength & sustainable health",
+  "Support through perimenopause AND menopause",
+  "Long-term lifestyle change — not quick fixes",
 ];
 
 export default function WhyBrightfield({ onOpenBooking }: WhyBrightfieldProps) {
@@ -46,17 +46,17 @@ export default function WhyBrightfield({ onOpenBooking }: WhyBrightfieldProps) {
 
             <div className="space-y-2.5 text-xs sm:text-base text-foreground/85 leading-relaxed font-medium">
               <p>
-                Since 2013, Brightfield has guided hundreds of midlife women to rebuild energy, regain physical strength, and restore hormonal balance.
+                Since 2013, Brightfield has been helping people build healthier relationships with fitness and wellbeing.
               </p>
               <p>
-                Generic calorie-cutting fails because it ignores changing estrogen, thyroid, and cortisol levels. We replace guesswork with doctor-aligned protocols that respect your physiology.
+                And when it comes to midlife women, we understand that one-size-fits-all doesn&apos;t work.
               </p>
             </div>
 
             <div className="mt-4 pt-1">
               <button
                 onClick={onOpenBooking}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-primary-hover active:scale-98 transition-all cursor-pointer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-6 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-primary-hover active:scale-98 transition-all cursor-pointer"
               >
                 <CalendarCheck className="w-4 h-4 text-white shrink-0" />
                 <span>BOOK YOUR FREE CONSULTATION</span>
@@ -77,7 +77,7 @@ export default function WhyBrightfield({ onOpenBooking }: WhyBrightfieldProps) {
                 <Sparkles className="w-4 h-4 text-accent" />
               </div>
               <h3 className="text-base sm:text-lg font-extrabold text-secondary leading-snug">
-                What Makes Our Approach Different?
+                What makes our approach different?
               </h3>
             </div>
 

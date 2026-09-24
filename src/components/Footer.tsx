@@ -14,25 +14,29 @@ export default function Footer({ onOpenBooking }: FooterProps) {
 
       <div className="mx-auto max-w-7xl px-3 min-[360px]:px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Big Pre-Footer CTA Box - fluid shrink */}
-        <div className="bg-gradient-to-br from-[#032d23] to-[#011a14] rounded-2xl sm:rounded-3xl p-4 min-[360px]:p-6 sm:p-8 md:p-10 border border-[#0d7363]/30 shadow-2xl text-center max-w-4xl mx-auto mb-7 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/60 border border-[#0d7363]/30 px-3 py-1 text-[11px] sm:text-xs font-semibold text-accent mb-2 sm:mb-3">
+        <div className="bg-gradient-to-br from-[#032d23] to-[#011a14] rounded-2xl sm:rounded-3xl p-5 min-[360px]:p-7 sm:p-10 border border-[#0d7363]/30 shadow-2xl text-center max-w-3xl mx-auto mb-7 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/60 border border-[#0d7363]/30 px-3.5 py-1 text-[11px] sm:text-xs font-semibold text-accent mb-3 sm:mb-4">
             <Sparkles className="w-3.5 h-3.5 shrink-0" />
-            <span>Since 2013 &bull; 13+ Years Transforming Women&apos;s Lives</span>
+            <span>Since 2013</span>
           </div>
 
-          <h3 className="text-lg min-[360px]:text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-1.5 sm:mb-2 leading-tight">
-            Ready to Stop Fighting Your Body?
-          </h3>
+          <h2 className="text-2xl min-[360px]:text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 sm:mb-3">
+            BRIGHTFIELD
+          </h2>
 
-          <p className="text-xs sm:text-base text-white/80 max-w-xl mx-auto mb-4 sm:mb-6 leading-relaxed px-1">
-            Book your free 30-minute consultation. Discover how our 3-dimension coaching framework restores your energy, sleep, and natural weight balance.
+          <p className="text-base sm:text-xl font-bold text-accent tracking-wide mb-1">
+            Fitness. Nutrition. Mind.
+          </p>
+
+          <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto mb-6 sm:mb-8 font-medium">
+            A Better Way Through Midlife.
           </p>
 
           <button
             onClick={onOpenBooking}
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-8 py-3 text-xs sm:text-sm font-bold text-white shadow-xl shadow-emerald-950/30 transition-all cursor-pointer"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-7 sm:px-9 py-3.5 text-xs sm:text-sm font-extrabold text-white shadow-xl shadow-emerald-950/30 transition-all cursor-pointer"
           >
-            <span>BOOK YOUR FREE CONSULTATION</span>
+            <span>START YOUR BRIGHTFIELD JOURNEY</span>
             <ArrowRight className="w-4 h-4 text-white" />
           </button>
         </div>
@@ -49,13 +53,13 @@ export default function Footer({ onOpenBooking }: FooterProps) {
               </span>
             </div>
             <p className="text-[11px] sm:text-xs text-white/70">
-              Women&apos;s Hormonal Wellness &bull; Since 2013
+              Fitness. Nutrition. Mind. &bull; Since 2013
             </p>
           </div>
 
           <div className="text-center">
             <p className="text-xs sm:text-sm text-white/80 font-medium px-1">
-              Specialized Coaching for Women 38+ Navigating Perimenopause &amp; Menopause
+              A Better Way Through Midlife &bull; Perimenopause &amp; Menopause Wellness
             </p>
           </div>
 

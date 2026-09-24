@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Activity, Apple, RefreshCw, Trophy, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { Activity, Apple, RefreshCw, Trophy, Sparkles, ChevronLeft, ChevronRight, CalendarCheck } from "lucide-react";
 
 interface FourPillarsApproachProps {
   onOpenBooking?: () => void;
@@ -12,38 +12,38 @@ const pillars = [
   {
     num: "01",
     tag: "MOVE",
-    title: "Joint-Friendly Strength",
+    title: "Build a body that supports the life you want to live.",
     description:
-      "Targeted resistance training that revives your resting metabolism and protects bone density without adrenal burnout.",
+      "Personalised fitness that focuses on strength, mobility, balance, stamina and functional movement.",
     icon: Activity,
   },
   {
     num: "02",
     tag: "NOURISH",
-    title: "Hormonal Nutrition",
+    title: "Eat to support your changing body — not punish it.",
     description:
-      "Nutrient-dense Indian meals with optimal protein and fiber to stabilize insulin, eliminate cravings, and fuel your day.",
+      "Practical nutrition strategies designed around your lifestyle, preferences and goals.",
     icon: Apple,
   },
   {
     num: "03",
     tag: "RESET",
-    title: "Nervous System Recovery",
+    title: "Because your mental wellbeing matters too.",
     description:
-      "Daily protocols to down-regulate cortisol, soothe midlife anxiety, and restore 7-8 hours of deep restorative sleep.",
+      "Understand your emotional triggers, manage stress better and rebuild the confidence that may have taken a backseat.",
     icon: RefreshCw,
   },
   {
     num: "04",
-    tag: "SUSTAIN",
-    title: "Lifelong Habit Architecture",
+    tag: "THRIVE",
+    title: "Turn healthy choices into a lifestyle you can actually maintain.",
     description:
-      "Simple, realistic routines that integrate seamlessly with your family and work — no temporary 30-day crash challenges.",
+      "No temporary fixes. No 30-day challenges. Just sustainable habits that fit into your real life.",
     icon: Trophy,
   },
 ];
 
-export default function FourPillarsApproach({}: FourPillarsApproachProps) {
+export default function FourPillarsApproach({ onOpenBooking }: FourPillarsApproachProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -79,7 +79,7 @@ export default function FourPillarsApproach({}: FourPillarsApproachProps) {
           >
             <span className="inline-flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-full bg-emerald-950/5 text-primary font-bold text-[11px] sm:text-xs uppercase tracking-wider mb-2 border border-[#0d7363]/20">
               <Sparkles className="w-3.5 h-3.5 text-accent shrink-0" />
-              <span>The Brightfield Method</span>
+              <span>Introducing the Brightfield Approach</span>
             </span>
 
             <h2 className="text-lg min-[360px]:text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-secondary leading-tight">
@@ -87,10 +87,6 @@ export default function FourPillarsApproach({}: FourPillarsApproachProps) {
             </h2>
 
             <div className="h-0.5 sm:h-1 w-14 bg-primary rounded-full mx-auto mt-2 sm:mt-2.5 mb-2.5"></div>
-
-            <p className="text-xs sm:text-base text-foreground/80 font-medium leading-relaxed max-w-2xl mx-auto px-1">
-              Four progressive pillars engineered specifically for women navigating midlife hormonal transitions.
-            </p>
           </motion.div>
         </div>
 
@@ -198,6 +194,23 @@ export default function FourPillarsApproach({}: FourPillarsApproachProps) {
             );
           })}
         </div>
+
+        {/* Section CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-6 sm:mt-8 text-center"
+        >
+          <button
+            onClick={onOpenBooking}
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary hover:bg-primary-hover active:scale-98 px-6 sm:px-8 py-3 text-xs sm:text-sm font-bold text-white shadow-lg transition-all cursor-pointer"
+          >
+            <CalendarCheck className="w-4 h-4 text-white shrink-0" />
+            <span>BOOK YOUR FREE CONSULTATION</span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );
