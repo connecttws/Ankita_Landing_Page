@@ -67,9 +67,11 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h1 className="text-[20px] min-[360px]:text-[22px] min-[400px]:text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-secondary leading-tight sm:leading-[1.15] mb-1.5 sm:mb-2.5">
-              <span className="block sm:inline">Why Weight Loss Suddenly <br className="sm:hidden" />Feels Impossible After 38.</span>{" "}
+              <span className="block">
+                If losing weight suddenly <br className="sm:hidden" />feels impossible after 38
+              </span>{" "}
               <span className="block text-primary mt-0.5 sm:mt-1.5">
-                And How to Rebalance <br className="sm:hidden" />Your Body for Good.
+                feeling stuck, this is for you
               </span>
             </h1>
 
