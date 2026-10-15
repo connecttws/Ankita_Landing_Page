@@ -27,8 +27,8 @@ export default function FounderProfile({ onOpenBooking }: FounderProfileProps) {
           >
             <div className="relative w-full max-w-[240px] min-[360px]:max-w-[270px] sm:max-w-sm md:max-w-md aspect-[4/5] rounded-[2rem] bg-emerald-950/80 border border-[#0d7363]/30 overflow-hidden shadow-2xl flex items-center justify-center group">
               <Image
-                src="/images/ankita_portrait.jpg"
-                alt="Ankita Pareek - Founder of Brightfield"
+                src="/images/ankita_coach.png"
+                alt="Ankita Pareek - Founder & Head Coach at Brightfield"
                 fill
                 priority
                 className="object-cover object-top z-0 transition-transform duration-700 group-hover:scale-105"
