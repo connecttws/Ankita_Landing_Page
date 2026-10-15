@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TransitionSymptoms from "@/components/TransitionSymptoms";
+import BeforeAfterSection from "@/components/BeforeAfterSection";
 import ThreeDimensionsSection from "@/components/ThreeDimensionsSection";
 import FourPillarsApproach from "@/components/FourPillarsApproach";
 import WhyBrightfield from "@/components/WhyBrightfield";
@@ -32,6 +33,9 @@ export default function Home() {
 
       {/* Symptoms / Empathy Section */}
       <TransitionSymptoms onOpenBooking={handleOpenBooking} />
+
+      {/* Real Client Before & After Transformations Carousel */}
+      <BeforeAfterSection onOpenBooking={handleOpenBooking} />
 
       {/* Philosophy / 3 Dimensions Section */}
       <ThreeDimensionsSection onOpenBooking={handleOpenBooking} />

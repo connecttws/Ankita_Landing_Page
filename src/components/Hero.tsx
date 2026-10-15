@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { CalendarCheck, Play, Sparkles, HeartPulse } from "lucide-react";
-import Image from "next/image";
+import { CalendarCheck, Sparkles } from "lucide-react";
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -19,7 +17,6 @@ const trustItems = [
 ];
 
 export default function Hero({ onOpenBooking }: HeroProps) {
-  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
 
   return (
     <section className="relative overflow-hidden bg-[#f8f6f2] pt-20 min-[400px]:pt-22 pb-6 sm:pt-28 sm:pb-12 w-full max-w-full">
@@ -82,53 +79,15 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6 }}
-            className="mt-1 sm:mt-2 relative w-full max-w-2xl mx-auto aspect-video bg-[#032d23] rounded-xl sm:rounded-3xl shadow-xl shadow-emerald-950/15 overflow-hidden group border-2 sm:border-4 border-white/90"
+            className="mt-1 sm:mt-2 relative w-full max-w-2xl mx-auto aspect-video rounded-xl sm:rounded-3xl shadow-xl shadow-emerald-950/15 overflow-hidden border-2 sm:border-4 border-white/90 bg-[#032d23]"
           >
-            {isPlayingVideo ? (
-              <div className="relative w-full h-full flex flex-col items-center justify-center bg-[#032d23] text-white p-4 text-center">
-                <HeartPulse className="w-8 h-8 sm:w-11 sm:h-11 text-accent animate-pulse mb-2" />
-                <h4 className="text-sm sm:text-lg font-bold mb-1">
-                  Special Video Presentation by Ankita Pareek
-                </h4>
-                <p className="text-xs sm:text-sm text-white/80 max-w-md mb-3">
-                  Discover how our whole-woman approach restores your energy, sleep, and natural weight balance.
-                </p>
-                <button
-                  onClick={onOpenBooking}
-                  className="rounded-full bg-primary hover:bg-primary-hover px-5 py-2 text-xs sm:text-sm font-bold text-white shadow-md cursor-pointer transition-all"
-                >
-                  Book Free 1-on-1 Consultation
-                </button>
-              </div>
-            ) : (
-              <div
-                onClick={() => setIsPlayingVideo(true)}
-                className="relative w-full h-full cursor-pointer overflow-hidden group"
-              >
-                <Image
-                  src="/images/vsl_video_cover.jpg"
-                  alt="Ankita Pareek Video Cover"
-                  fill
-                  priority
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 768px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#032d23]/85 via-[#032d23]/35 to-transparent transition-opacity group-hover:opacity-90"></div>
-
-                {/* Pulsing Play Button */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
-                  <div className="relative flex items-center justify-center">
-                    <div className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/40 animate-ping"></div>
-                    <div className="w-11 h-11 sm:w-16 sm:h-16 rounded-full bg-primary text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-primary-hover transition-all duration-300">
-                      <Play className="w-4 h-4 sm:w-7 sm:h-7 fill-white ml-0.5 sm:ml-1" />
-                    </div>
-                  </div>
-                  <span className="mt-2.5 text-[10.5px] sm:text-xs font-bold tracking-wide text-white bg-[#032d23]/90 backdrop-blur-xs px-3.5 py-1 rounded-full border border-white/20">
-                    +13 Years | Women’s Wellness &amp; Fitness
-                  </span>
-                </div>
-              </div>
-            )}
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/jui1y28et8?seo=false&videoFoam=true"
+              title="Hero Video"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            ></iframe>
           </motion.div>
 
           {/* Primary CTA Area */}

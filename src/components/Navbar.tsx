@@ -47,8 +47,9 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-8 text-sm font-semibold text-secondary/80">
+        <div className="hidden lg:flex items-center gap-7 text-sm font-semibold text-secondary/80">
           <a href="#symptoms" className="hover:text-primary transition-colors">Symptoms</a>
+          <a href="#results" className="hover:text-primary transition-colors">Results</a>
           <a href="#dimensions" className="hover:text-primary transition-colors">3 Dimensions</a>
           <a href="#approach" className="hover:text-primary transition-colors">Approach</a>
           <a href="#founder" className="hover:text-primary transition-colors">Meet Ankita</a>
