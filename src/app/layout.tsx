@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Great_Vibes } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -59,6 +60,13 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="antialiased min-h-[100dvh] w-full max-w-full overflow-x-hidden bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary">
+        {/* BooClient CRM Universal Lead Tracker */}
+        <Script
+          src="/crm-lead-tracker.js"
+          data-crm-key="bcl_pub_booclient-team_brightfield-women-s-hormonal-wellness-367b5b"
+          data-api-url="https://clientcrmsystem.vercel.app/api/public/leads"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>

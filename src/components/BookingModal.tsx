@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, Calendar, Phone, Mail, User, Sparkles } from "lucide-react";
+import { X, CheckCircle2, Calendar, Phone, Mail, User, Sparkles, Loader2, AlertCircle } from "lucide-react";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -11,22 +11,56 @@ interface BookingModalProps {
 
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
     email: "",
-    stage: "Perimenopause (38–45)",
-    goal: "Weight & Hormonal Balance",
+    stage: "Perimenopause (Age 38–45)",
+    goal: "Weight & Stubborn Belly Fat",
     notes: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit consultation request.");
+      }
+
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      setErrorMessage(msg);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setErrorMessage("");
+    setFormData({
+      fullName: "",
+      phone: "",
+      email: "",
+      stage: "Perimenopause (Age 38–45)",
+      goal: "Weight & Stubborn Belly Fat",
+      notes: "",
+    });
     onClose();
   };
 
@@ -93,6 +127,13 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
+                  {errorMessage && (
+                    <div className="flex items-center gap-2 p-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
+                      <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-[11px] sm:text-xs font-semibold text-secondary mb-1">
                       Full Name *
@@ -101,6 +142,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       <User className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                       <input
                         type="text"
+                        name="name"
                         required
                         placeholder="e.g. Priya Sharma"
                         value={formData.fullName}
@@ -119,6 +161,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         <Phone className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                         <input
                           type="tel"
+                          name="phone"
                           required
                           placeholder="+91 98765 43210"
                           value={formData.phone}
@@ -136,6 +179,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         <Mail className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                         <input
                           type="email"
+                          name="email"
                           required
                           placeholder="name@example.com"
                           value={formData.email}
@@ -152,6 +196,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         Where Are You In Your Journey?
                       </label>
                       <select
+                        name="stage"
+                        data-question="Where Are You In Your Journey?"
                         value={formData.stage}
                         onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                         className="w-full rounded-xl border border-gray-200 px-2.5 py-2 text-xs sm:text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white"
@@ -168,6 +214,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                         Main Focus Area
                       </label>
                       <select
+                        name="goal"
+                        data-question="Main Focus Area"
                         value={formData.goal}
                         onChange={(e) => setFormData({ ...formData, goal: e.target.value })}
                         className="w-full rounded-xl border border-gray-200 px-2.5 py-2 text-xs sm:text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white"
@@ -186,6 +234,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       Anything specific you want Ankita to know? (Optional)
                     </label>
                     <textarea
+                      name="notes"
+                      data-question="Personal Challenges & Questions"
                       rows={2}
                       placeholder="Share your current challenges or questions..."
                       value={formData.notes}
@@ -196,10 +246,20 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
                   <button
                     type="submit"
-                    className="w-full rounded-full bg-primary py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-950/20 hover:bg-primary-hover active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full rounded-full bg-primary py-2.5 sm:py-3 text-xs sm:text-sm font-bold text-white shadow-lg shadow-emerald-950/20 hover:bg-primary-hover active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <Calendar className="w-4 h-4 text-white" />
-                    <span>Confirm Free Consultation Request</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span>Submitting Request...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Calendar className="w-4 h-4 text-white" />
+                        <span>Confirm Free Consultation Request</span>
+                      </>
+                    )}
                   </button>
 
                   <p className="text-[10px] text-center text-gray-500">
