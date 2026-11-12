@@ -1,9 +1,6 @@
 import { google } from 'googleapis';
 import { NextResponse } from 'next/server';
 
-const CRM_API_URL = process.env.CRM_API_URL || 'https://clientcrmsystem.vercel.app/api/public/leads';
-const CRM_KEY = process.env.CRM_KEY || 'bcl_pub_booclient-team_brightfield-women-s-hormonal-wellness-367b5b';
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -40,39 +37,11 @@ export async function POST(request: Request) {
       timeStyle: 'short',
     });
 
-    // ── 2. Dual Capture: Forward to BooClient CRM Server-Side ──────────────────
-    try {
-      const summaryParts = [
-        resolvedStage && resolvedStage !== '—' ? `Stage: ${resolvedStage}` : null,
-        resolvedGoal && resolvedGoal !== '—' ? `Focus: ${resolvedGoal}` : null,
-        resolvedNotes && resolvedNotes !== '—' ? `Notes: ${resolvedNotes}` : null,
-      ].filter(Boolean);
+    // Note: BooClient CRM Lead Capture is handled automatically client-side by
+    // /crm-lead-tracker.js in layout.tsx, capturing UTMs and dynamic questionnaire fields.
+    // We avoid duplicate server-side capture here.
 
-      await fetch(CRM_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          landingPageKey: CRM_KEY,
-          name: resolvedName,
-          phone: resolvedPhone,
-          email: resolvedEmail || undefined,
-          message: summaryParts.join(' | ') || undefined,
-          formData: {
-            name: resolvedName,
-            phone: resolvedPhone,
-            email: resolvedEmail,
-            stage: resolvedStage,
-            goal: resolvedGoal,
-            notes: resolvedNotes,
-          },
-          landingPageUrl: request.headers.get('referer') || 'https://brightfieldwellness.com',
-        }),
-      });
-    } catch (crmError) {
-      console.warn('[CRM Server Forward Warning]:', crmError);
-    }
-
-    // ── 3. Append to Google Sheets ────────────────────────────────────────────
+    // ── 2. Append to Google Sheets ────────────────────────────────────────────
     const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
     const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;

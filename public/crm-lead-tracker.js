@@ -6,6 +6,11 @@
 (function () {
   'use strict';
 
+  if (typeof window !== 'undefined') {
+    if (window.__bcl_lead_tracker_initialized) return;
+    window.__bcl_lead_tracker_initialized = true;
+  }
+
   // 1. Identify configuration from script tag
   const scriptTag = document.currentScript || document.querySelector('script[data-crm-key]');
   if (!scriptTag) return;
@@ -273,17 +278,6 @@
     function (e) {
       if (e.target && e.target.tagName === 'FORM') {
         submitLead(harvestForm(e.target));
-      }
-    },
-    true
-  );
-
-  document.addEventListener(
-    'click',
-    function (e) {
-      const btn = e.target.closest('button[type="submit"], input[type="submit"]');
-      if (btn && btn.closest('form')) {
-        submitLead(harvestForm(btn.closest('form')));
       }
     },
     true
